@@ -11,6 +11,21 @@ config_version=5
 [application]
 
 config/name="LudumDare_55"
-run/main_scene="res://src/audio/SoundManager.tscn"
+config/version="0.0.001"
+run/main_scene="res://src/main_menu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+boot_splash/image="res://assets/_tmp/print-statement.png"
 config/icon="res://icon.svg"
+
+[autoload]
+
+SoundManager="*res://src/audio/SoundManager.tscn"
+Constants="*res://src/util/constants.gd"
+Util="*res://src/util/util.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/size/resizable=false
+window/stretch/mode="viewport"
