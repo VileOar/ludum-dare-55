@@ -14,3 +14,8 @@ config/name="LudumDare_55"
 run/main_scene="res://src/audio/SoundManager.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=640
