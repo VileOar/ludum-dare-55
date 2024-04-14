@@ -47,7 +47,7 @@ var wander_timer := 0.0
 
 func _ready():
 	current_state = States.MOVING_TRUE
-	set_new_waypoint(waypoint.position)
+	#set_new_waypoint(waypoint.position)
 
 	temp_stop_timeout_ref.wait_time = temp_stop_time
 	wander_timer_ref.wait_time = wander_time
@@ -135,3 +135,7 @@ func _on_wander_stop_timer_timeout():
 	else:
 		current_state = States.MOVING_TRUE
 		set_new_waypoint(target_position, true)
+
+
+func _on_cat_head_object_detected(new_pos):
+	set_new_waypoint(new_pos)

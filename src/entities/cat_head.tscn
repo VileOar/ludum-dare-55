@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="2_5l43q"]
 
 [node name="CatHead" type="Node2D"]
-position = Vector2(192, 192)
 script = ExtResource("1_efdfu")
 _fov_range = 120
 metadata/_edit_group_ = true
