@@ -58,20 +58,20 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	# TODO: remove the input, it is just for testing purposes
-	if Input.is_key_pressed(KEY_W):
-		position.y -= 2
-	if Input.is_key_pressed(KEY_S):
-		position.y += 2
-	if Input.is_key_pressed(KEY_A):
-		position.x -= 2
-	if Input.is_key_pressed(KEY_D):
-		position.x += 2
-	
-	if Input.is_key_pressed(KEY_Q):
-		rotation -= deg_to_rad(2)
-	if Input.is_key_pressed(KEY_E):
-		rotation += deg_to_rad(2)
+	## TODO: remove the input, it is just for testing purposes
+	#if Input.is_key_pressed(KEY_W):
+		#position.y -= 2
+	#if Input.is_key_pressed(KEY_S):
+		#position.y += 2
+	#if Input.is_key_pressed(KEY_A):
+		#position.x -= 2
+	#if Input.is_key_pressed(KEY_D):
+		#position.x += 2
+	#
+	#if Input.is_key_pressed(KEY_Q):
+		#rotation -= deg_to_rad(2)
+	#if Input.is_key_pressed(KEY_E):
+		#rotation += deg_to_rad(2)
 	
 	# turn towards target rotation
 	if !is_equal_approx(_target_rotation, rotation):
@@ -100,13 +100,13 @@ func _physics_process(delta: float) -> void:
 
 
 ## TODO: remove this
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		var obj = load("res://src/entities/throwable.tscn").instantiate()
-		obj.position = get_global_mouse_position()
-		get_parent().add_child(obj)
-	if event.is_pressed() and event is InputEventKey and event.keycode == KEY_V:
-		set_turn_state((_turn_state + 1) % TurnStates.size())
+#func _unhandled_input(event: InputEvent) -> void:
+	#if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
+		#var obj = load("res://src/entities/throwable.tscn").instantiate()
+		#obj.position = get_global_mouse_position()
+		#get_parent().add_child(obj)
+	#if event.is_pressed() and event is InputEventKey and event.keycode == KEY_V:
+		#set_turn_state((_turn_state + 1) % TurnStates.size())
 
 
 ## function to set the turn state[br]

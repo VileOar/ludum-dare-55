@@ -9,9 +9,10 @@ bounce = 0.2
 radius = 32.0
 
 [node name="Throwable" type="RigidBody2D"]
+mass = 1.5
 physics_material_override = SubResource("PhysicsMaterial_4vfcx")
 gravity_scale = 0.0
-linear_damp = 2.0
+linear_damp = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

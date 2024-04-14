@@ -1,0 +1,30 @@
+[gd_scene load_steps=7 format=3 uid="uid://cfga545fyyrkd"]
+
+[ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_5ys6p"]
+[ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="2_0xakd"]
+[ext_resource type="Shader" path="res://assets/shaders/strength_indicator.gdshader" id="3_gykpu"]
+[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="4_d0mwv"]
+[ext_resource type="Script" path="res://src/entities/player/throw_meter.gd" id="5_8jxmx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qis21"]
+shader = ExtResource("3_gykpu")
+shader_parameter/percent = 0.0
+shader_parameter/low_alpha = 0.3
+
+[node name="Player" type="Node2D"]
+script = ExtResource("1_5ys6p")
+ball_scene = ExtResource("2_0xakd")
+
+[node name="StrengthIndicator" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+z_index = 1
+material = SubResource("ShaderMaterial_qis21")
+position = Vector2(64, 0)
+scale = Vector2(1, 0.1875)
+texture = ExtResource("4_d0mwv")
+offset = Vector2(64, 0)
+script = ExtResource("5_8jxmx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_d0mwv")
