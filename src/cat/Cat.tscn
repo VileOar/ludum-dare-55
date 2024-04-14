@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://c47hc7nk4cpwu"]
+
+[ext_resource type="Script" path="res://src/cat/cat.gd" id="1_u8x1r"]
+[ext_resource type="Texture2D" uid="uid://vx8m1wbrwkog" path="res://assets/cat_body.png" id="2_yjmdl"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bok6h"]
+radius = 25.0
+height = 128.0
+
+[node name="Cat" type="CharacterBody2D"]
+script = ExtResource("1_u8x1r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_yjmdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bok6h")

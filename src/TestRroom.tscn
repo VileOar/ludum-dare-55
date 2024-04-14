@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://crm0ac1yueb1x"]
+
+[ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="1_unpc6"]
+[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="2_3pye6"]
+
+[node name="TestRoom" type="Node2D"]
+
+[node name="Cat" parent="." node_paths=PackedStringArray("waypoint") instance=ExtResource("1_unpc6")]
+position = Vector2(235, 386)
+waypoint = NodePath("../Object")
+rot_speed = 0.05
+
+[node name="Object" type="Sprite2D" parent="."]
+position = Vector2(354, 560)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_3pye6")
