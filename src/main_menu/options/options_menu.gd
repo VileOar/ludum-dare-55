@@ -53,3 +53,15 @@ func set_resolution(new_resolution: Vector2):
 	DisplayServer.window_set_size(new_resolution)
 	get_viewport().set_size(new_resolution) 
 
+
+
+func _on_master_volume_slider_changed():
+	pass # Replace with function body.
+
+
+func _on_music_volume_slider_changed():
+	pass # Replace with function body.
+
+
+func _on_sound_volume_slider_changed():
+	pass # Replace with function body.

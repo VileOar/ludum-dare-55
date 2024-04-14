@@ -77,8 +77,6 @@ func stop_menu_audio():
 	# Gets each sound player from the dictionary and stops the each audio
 	for i in _sound_player_keys:
 		_sound_player_by_name.get(i).stop()
-	
-	
 
 	
 # UI Audio
@@ -90,6 +88,7 @@ func play_correct_sfx():
 	
 func play_error_sfx():
 	play_audio(ERROR_SFX)
+	
 	
 # Menu Audio
 # Plays the menu music if it exists

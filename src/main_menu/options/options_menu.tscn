@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://wg26fathbma7"]
+[gd_scene load_steps=18 format=3 uid="uid://wg26fathbma7"]
 
 [ext_resource type="Script" path="res://src/main_menu/options/options_menu.gd" id="1_jvye0"]
 [ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_h8m2f"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://bx4vodcpsorfx" path="res://src/ui_and_themes/options_ui.tres" id="5_ao4bh"]
 [ext_resource type="FontFile" uid="uid://cffuxqihmjsrf" path="res://assets/fonts/RedditMono-VariableFont_wght.ttf" id="5_fgqdm"]
 [ext_resource type="Texture2D" uid="uid://c5c1yjke2stqy" path="res://assets/UIElements/slider.png" id="6_2nw17"]
+[ext_resource type="Script" path="res://src/main_menu/options/volume_slider.gd" id="7_2o2dj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uho8c"]
 bg_color = Color(0, 0.439216, 0.490196, 1)
@@ -159,11 +160,14 @@ layout_mode = 2
 theme_override_constants/separation = 19
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jmax6")
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MasterVolumeContainer/SliderContainer"]
+[node name="MasterSlider" type="HSlider" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MasterVolumeContainer/SliderContainer"]
 layout_mode = 2
 theme = SubResource("Theme_0mnlk")
-value = 100.0
-editable = false
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("7_2o2dj")
+bus_name = "Master"
 
 [node name="MusicVolumeContainer3" type="HBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 layout_mode = 2
@@ -189,11 +193,14 @@ layout_mode = 2
 theme_override_constants/separation = 19
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jmax6")
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MusicVolumeContainer3/SliderContainer"]
+[node name="MusicSlider" type="HSlider" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MusicVolumeContainer3/SliderContainer"]
 layout_mode = 2
 theme = SubResource("Theme_0mnlk")
-value = 100.0
-editable = false
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("7_2o2dj")
+bus_name = "Music"
 
 [node name="SoundVolume" type="HBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 layout_mode = 2
@@ -219,11 +226,14 @@ layout_mode = 2
 theme_override_constants/separation = 19
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jmax6")
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume/SliderContainer"]
+[node name="SoundSlider" type="HSlider" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume/SliderContainer"]
 layout_mode = 2
 theme = SubResource("Theme_0mnlk")
-value = 100.0
-editable = false
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("7_2o2dj")
+bus_name = "SFX"
 
 [node name="ResolutionContainer" type="HBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 layout_mode = 2
@@ -281,3 +291,7 @@ theme_override_styles/pressed = SubResource("StyleBoxEmpty_aadbt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_dbfo5")
 text = "back"
 alignment = 0
+
+[connection signal="changed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MasterVolumeContainer/SliderContainer/MasterSlider" to="." method="_on_master_volume_slider_changed"]
+[connection signal="changed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MusicVolumeContainer3/SliderContainer/MusicSlider" to="." method="_on_music_volume_slider_changed"]
+[connection signal="changed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume/SliderContainer/SoundSlider" to="." method="_on_sound_volume_slider_changed"]

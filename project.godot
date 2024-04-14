@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://assets/_tmp/print-statement.png"
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://src/audio/default_bus_layout.tres"
+
 [autoload]
 
 SoundManager="*res://src/audio/SoundManager.tscn"
