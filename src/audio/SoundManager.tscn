@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://cuskgbd3rfsdu"]
+
+[ext_resource type="Script" path="res://src/audio/SoundManager.gd" id="1_fio71"]
+
+[node name="SoundManager" type="Node"]
+script = ExtResource("1_fio71")
+
+[node name="MenuMusic" type="Node" parent="."]
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="MenuMusic"]
+autoplay = true
+bus = &"Music"
+
+[node name="UIAudio" type="Node" parent="."]
+
+[node name="Click" type="AudioStreamPlayer" parent="UIAudio"]
+bus = &"SFX"
+
+[node name="Correct" type="AudioStreamPlayer" parent="UIAudio"]
+bus = &"SFX"
+
+[node name="Error" type="AudioStreamPlayer" parent="UIAudio"]
+bus = &"SFX"
+
+[node name="GameAudio" type="Node" parent="."]
+
+[node name="GameSFX" type="Node" parent="GameAudio"]
+
+[node name="GameEnd" type="Node" parent="GameAudio"]
+
+[node name="EndMusic" type="AudioStreamPlayer" parent="GameAudio/GameEnd"]
+bus = &"Music"
+
+[node name="GameMusic" type="Node" parent="GameAudio"]
+
+[node name="GameMusic" type="AudioStreamPlayer" parent="GameAudio/GameMusic"]
+bus = &"Music"
