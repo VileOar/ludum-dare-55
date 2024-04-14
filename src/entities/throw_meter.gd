@@ -43,7 +43,7 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		if event.pressed: # start pressing
 			_clicking = true
 		elif _clicking: # if it is during a click
