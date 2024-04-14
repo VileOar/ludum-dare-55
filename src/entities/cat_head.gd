@@ -10,7 +10,8 @@ enum TurnStates {
 	STOP, ## cat will not turn its head and remain at 0 rotation
 	IDLE, ## cat will turn head at random positions and smoother speeds
 	MOVE, ## cat will turn head at much smaller deltas and not as often
-	LOCK, ## cat will always look at position, if that does not exceed max turn angle
+	LOOK_AT, ## cat will always look at position, if that does not exceed max turn angle
+	LOOK_AWAY, ## cat will always try to look away from position
 }
 
 ## chance to choose a random position to turn to in idle state
@@ -26,7 +27,7 @@ const MOVE_TURN_RANGE = deg_to_rad(30)
 const TURN_WEIGHT = 0.08
 
 ## signal for when a body is detected
-signal object_detected(position)
+signal object_detected(throwable)
 
 ## the max distance of the field of vision
 @export var _fov_range = 60
@@ -58,20 +59,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	## TODO: remove the input, it is just for testing purposes
-	#if Input.is_key_pressed(KEY_W):
-		#position.y -= 2
-	#if Input.is_key_pressed(KEY_S):
-		#position.y += 2
-	#if Input.is_key_pressed(KEY_A):
-		#position.x -= 2
-	#if Input.is_key_pressed(KEY_D):
-		#position.x += 2
-	#
-	#if Input.is_key_pressed(KEY_Q):
-		#rotation -= deg_to_rad(2)
-	#if Input.is_key_pressed(KEY_E):
-		#rotation += deg_to_rad(2)
 	
 	# turn towards target rotation
 	if !is_equal_approx(_target_rotation, rotation):
@@ -93,20 +80,15 @@ func _physics_process(delta: float) -> void:
 				if chance < MOVE_TURN_CHANCE:
 					var new_rot = randf_range(-MOVE_TURN_RANGE, MOVE_TURN_RANGE)
 					_turn_towards(new_rot)
-		TurnStates.LOCK:
-			# will always try to look at locked_position, if that does not exceed limits
-			var new_rot = clamp(transform.x.angle_to(position.direction_to(_locked_position)), -_MAX_TURN_ANGLE, _MAX_TURN_ANGLE)
+		TurnStates.LOOK_AT, TurnStates.LOOK_AWAY:
+			var direction_vector = position.direction_to(_locked_position)
+			if _turn_state == TurnStates.LOOK_AWAY: # if away, look in the other direction
+				direction_vector = direction_vector.rotated(PI)
+			
+			# will always try to look at or away from locked_position, if that does not exceed limits
+			var new_rot = clamp(transform.x.angle_to(direction_vector), -_MAX_TURN_ANGLE, _MAX_TURN_ANGLE)
+			
 			_turn_towards(new_rot)
-
-
-## TODO: remove this
-#func _unhandled_input(event: InputEvent) -> void:
-	#if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		#var obj = load("res://src/entities/throwable.tscn").instantiate()
-		#obj.position = get_global_mouse_position()
-		#get_parent().add_child(obj)
-	#if event.is_pressed() and event is InputEventKey and event.keycode == KEY_V:
-		#set_turn_state((_turn_state + 1) % TurnStates.size())
 
 
 ## function to set the turn state[br]
@@ -141,5 +123,5 @@ func _build_fov():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	object_detected.emit(body.global_position)
-	set_turn_state(TurnStates.LOCK, body.global_position)
+	if body is Throwable:
+		object_detected.emit(body)
