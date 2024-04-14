@@ -10,9 +10,6 @@
 position = Vector2(107, 56)
 waypoint = NodePath("../Object")
 debug_target = NodePath("../Object2")
-rot_speed = 0.05
-max_variate_waypoint_interval = 1.5
-max_wander_angle_variation = 40
 
 [node name="Object" type="Sprite2D" parent="."]
 position = Vector2(563, 294)

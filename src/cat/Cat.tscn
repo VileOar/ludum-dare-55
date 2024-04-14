@@ -17,3 +17,12 @@ texture = ExtResource("2_yjmdl")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_bok6h")
+
+[node name="TempStopTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WanderStopTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="TempStopTimer" to="." method="_on_temp_stop_timer_timeout"]
+[connection signal="timeout" from="WanderStopTimer" to="." method="_on_wander_stop_timer_timeout"]
