@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://comndc2e2crse"]
 
-[ext_resource type="Script" path="res://src/main_menu/pause/pause_menu.gd" id="1_8deyu"]
+[ext_resource type="Script" path="res://src/menus/pause/pause_menu.gd" id="1_8deyu"]
 [ext_resource type="Texture2D" uid="uid://b8u38etotq5kd" path="res://assets/UIElements/bar_disabled.png" id="3_blh7p"]
 [ext_resource type="Texture2D" uid="uid://dm5r0ommyyqym" path="res://assets/UIElements/bar.png" id="4_1s3f8"]
-[ext_resource type="PackedScene" uid="uid://wg26fathbma7" path="res://src/main_menu/options/options_menu.tscn" id="4_etey5"]
+[ext_resource type="PackedScene" uid="uid://wg26fathbma7" path="res://src/menus/options/options_menu.tscn" id="4_etey5"]
 [ext_resource type="Texture2D" uid="uid://c5c1yjke2stqy" path="res://assets/UIElements/slider.png" id="5_0p2kc"]
 [ext_resource type="FontFile" uid="uid://cffuxqihmjsrf" path="res://assets/fonts/RedditMono-VariableFont_wght.ttf" id="6_v6mjo"]
 

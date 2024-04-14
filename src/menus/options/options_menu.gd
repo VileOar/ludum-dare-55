@@ -16,7 +16,7 @@ func _ready():
 	back_button.button_down.connect(_on_back_pressed)
 	resolution_dropdown_button.button_down.connect(_on_resolution_clicked)
 	resolution_dropdown_button.item_selected.connect(_on_resolution_selected)
-# TODO remove this temp resolution setup
+	# TODO remove this temp resolution setup
 	_on_resolution_selected(6)
 
 func _play_click_sfx() -> void:
@@ -56,15 +56,3 @@ func set_resolution(new_resolution: Vector2):
 	DisplayServer.window_set_size(new_resolution)
 	get_viewport().set_size(new_resolution) 
 
-
-
-func _on_master_volume_slider_changed():
-	pass # Replace with function body.
-
-
-func _on_music_volume_slider_changed():
-	pass # Replace with function body.
-
-
-func _on_sound_volume_slider_changed():
-	pass # Replace with function body.

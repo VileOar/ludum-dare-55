@@ -1,0 +1,51 @@
+[gd_scene load_steps=11 format=3 uid="uid://c15f8n6tsvbed"]
+
+[ext_resource type="Script" path="res://src/effects/Fireworks.gd" id="1_usic5"]
+[ext_resource type="Texture2D" uid="uid://c2r7d2srggj4p" path="res://assets/game_assets/tuna.png" id="1_vjbdn"]
+[ext_resource type="PackedScene" uid="uid://bcadh488kc83i" path="res://src/effects/Trail.tscn" id="2_8407v"]
+[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="2_lkl1w"]
+[ext_resource type="Script" path="res://src/effects/firework_trail.gd" id="3_powjo"]
+
+[sub_resource type="Gradient" id="Gradient_0cqsq"]
+offsets = PackedFloat32Array(0.52459, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1kler"]
+gradient = SubResource("Gradient_0cqsq")
+
+[sub_resource type="Curve" id="Curve_xef17"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_w56g8"]
+curve = SubResource("Curve_xef17")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fidxx"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 500.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_w56g8")
+color_ramp = SubResource("GradientTexture1D_1kler")
+
+[node name="Firework" type="Node2D"]
+position = Vector2(960, 1000)
+script = ExtResource("1_usic5")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_lkl1w")
+
+[node name="ExplosionFishFireworks" type="GPUParticles2D" parent="."]
+emitting = false
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_fidxx")
+texture = ExtResource("1_vjbdn")
+one_shot = true
+explosiveness = 1.0
+draw_order = 0
+
+[node name="Trail" parent="." instance=ExtResource("2_8407v")]
+script = ExtResource("3_powjo")

@@ -28,8 +28,8 @@ func _process(delta: float):
 func _recalculate_time() -> void:
 	var total_seconds = int(time / INGAME_TO_REALTIME_DURATION)
 	var second = total_seconds % SECONDS_PER_MINUTE
-	var minute = int(total_seconds / SECONDS_PER_MINUTE)
-	var hour = int(minute / MINUTES_PER_HOUR)
+	var minute = int(float(total_seconds) / SECONDS_PER_MINUTE)
+	var hour = int(float(minute) / MINUTES_PER_HOUR)
 
 	if past_second != second:
 		past_second = second

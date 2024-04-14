@@ -1,13 +1,13 @@
 [gd_scene load_steps=18 format=3 uid="uid://wg26fathbma7"]
 
-[ext_resource type="Script" path="res://src/main_menu/options/options_menu.gd" id="1_jvye0"]
+[ext_resource type="Script" path="res://src/menus/options/options_menu.gd" id="1_jvye0"]
 [ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_h8m2f"]
 [ext_resource type="Texture2D" uid="uid://b8u38etotq5kd" path="res://assets/UIElements/bar_disabled.png" id="4_0wj8q"]
 [ext_resource type="Texture2D" uid="uid://dm5r0ommyyqym" path="res://assets/UIElements/bar.png" id="5_27p7f"]
 [ext_resource type="Theme" uid="uid://bx4vodcpsorfx" path="res://src/ui_and_themes/options_ui.tres" id="5_ao4bh"]
 [ext_resource type="FontFile" uid="uid://cffuxqihmjsrf" path="res://assets/fonts/RedditMono-VariableFont_wght.ttf" id="5_fgqdm"]
 [ext_resource type="Texture2D" uid="uid://c5c1yjke2stqy" path="res://assets/UIElements/slider.png" id="6_2nw17"]
-[ext_resource type="Script" path="res://src/main_menu/options/volume_slider.gd" id="7_2o2dj"]
+[ext_resource type="Script" path="res://src/menus/options/volume_slider.gd" id="7_2o2dj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uho8c"]
 bg_color = Color(0, 0.439216, 0.490196, 1)

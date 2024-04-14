@@ -12,10 +12,10 @@ shader_parameter/percent = 0.0
 shader_parameter/low_alpha = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8yyy"]
-size = Vector2(32, 608)
+size = Vector2(32, 1080)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73ob8"]
-size = Vector2(608, 32)
+size = Vector2(1920, 32)
 
 [node name="TestMap" type="Node2D"]
 script = ExtResource("1_3vq05")

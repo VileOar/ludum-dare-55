@@ -6,7 +6,7 @@ extends Control
 @onready var options_menu_node : OptionsMenu = $OptionsMenu
 @onready var exit_button : Button = $MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/ExitButton
 
-#@onready var game_scene : PackedScene = preload("")
+@onready var game_scene : PackedScene = preload("res://src/tmp_game/test_game.tscn")
 
 
 func _ready():
@@ -26,7 +26,7 @@ func _play_click_sfx() -> void:
 func _on_start_pressed() -> void:
 	_play_click_sfx()
 	SoundManager.instance.play_correct_sfx()
-	#get_tree().change_scene_to_packed(game_scene)
+	get_tree().change_scene_to_packed(game_scene)
 
 
 func _on_options_pressed() -> void:
