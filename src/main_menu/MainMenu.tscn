@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://gkb307hkjv4f"]
+[gd_scene load_steps=14 format=3 uid="uid://gkb307hkjv4f"]
 
 [ext_resource type="Script" path="res://src/main_menu/main_menu.gd" id="1_n7r5h"]
 [ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_tqg8k"]
+[ext_resource type="AudioStream" uid="uid://c5l8wmvewqvs8" path="res://assets/music/cat_titletheme.wav" id="5_y0baw"]
 [ext_resource type="Texture2D" uid="uid://d2xko5gsjdny7" path="res://assets/UIElements/arrow2.png" id="6_0mpab"]
 [ext_resource type="PackedScene" uid="uid://wg26fathbma7" path="res://src/main_menu/options/options_menu.tscn" id="7_ywl7c"]
 
@@ -231,3 +232,8 @@ randomness = 0.6
 [node name="OptionsMenu" parent="." instance=ExtResource("7_ywl7c")]
 visible = false
 layout_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_y0baw")
+autoplay = true
+mix_target = 2
