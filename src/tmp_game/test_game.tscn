@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://ctvekxs34l1oc"]
+[gd_scene load_steps=12 format=3 uid="uid://ctvekxs34l1oc"]
 
 [ext_resource type="Texture2D" uid="uid://dw1chptfanwiu" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
 [ext_resource type="Script" path="res://src/tmp_game/test_game.gd" id="1_ond2o"]
@@ -6,10 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://cfhxcnj27ua1c" path="res://assets/_tmp/Artboard_23.png" id="2_v41xp"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
 [ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
-[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="7_nduo8"]
+[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="8_foq5f"]
 [ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="8_wr4eh"]
-[ext_resource type="Script" path="res://src/tmp_game/cat_tmp.gd" id="9_0xhhd"]
-[ext_resource type="Texture2D" uid="uid://fvi6dxglrfwk" path="res://assets/game_assets/cat.png" id="10_bsvaa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8yyy"]
 size = Vector2(32, 1080)
@@ -19,10 +17,6 @@ size = Vector2(1920, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a05jt"]
 size = Vector2(475, 32)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vecav"]
-radius = 42.0
-height = 256.0
 
 [node name="TestGame" type="Node2D"]
 script = ExtResource("1_ond2o")
@@ -103,31 +97,11 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallHudRightTop"]
 position = Vector2(1708, 96)
 rotation = 0.479966
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a05jt")
-
-[node name="Player" parent="." instance=ExtResource("7_nduo8")]
-unique_name_in_owner = true
-position = Vector2(275, 574)
 
 [node name="Cat" parent="." instance=ExtResource("8_wr4eh")]
 position = Vector2(1763, 629)
 rotation = 3.14159
 
-[node name="CatTMP" type="Node2D" parent="."]
-visible = false
-position = Vector2(592, 544)
-script = ExtResource("9_0xhhd")
-
-[node name="CatBody" type="RigidBody2D" parent="CatTMP"]
-collision_layer = 2
-collision_mask = 2
-gravity_scale = 0.0
-
-[node name="Icon" type="Sprite2D" parent="CatTMP/CatBody"]
-modulate = Color(1, 1, 1, 0.564706)
-texture = ExtResource("10_bsvaa")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CatTMP/CatBody"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_vecav")
+[node name="Player" parent="." instance=ExtResource("8_foq5f")]
+position = Vector2(344, 537)
