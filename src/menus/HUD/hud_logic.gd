@@ -1,4 +1,5 @@
 extends MarginContainer
+class_name HUDLogic
 
 signal time_progress(value : int, is_value_to_progress_added : bool)
 
@@ -26,5 +27,8 @@ func _progress_time(total_seconds : int) -> void:
 	if seconds_for_next_value <= total_seconds:
 		progress_value += 1
 		time_progress.emit(1, true)
-		
 
+
+## callback for when a new next item is spawned by the player
+func _on_new_next_item(item_id):
+	%NextObject.texture = Constants.get_item_texture(item_id)

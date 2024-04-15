@@ -10,6 +10,7 @@ bounce = 0.2
 radius = 32.0
 
 [node name="Throwable" type="RigidBody2D"]
+collision_mask = 5
 mass = 1.5
 physics_material_override = SubResource("PhysicsMaterial_4vfcx")
 gravity_scale = 0.0

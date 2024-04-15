@@ -55,6 +55,7 @@ layout_mode = 2
 texture = ExtResource("3_agbgx")
 
 [node name="NextObject" type="TextureRect" parent="TopRightContainer/MarginContainer/TopRightContainer/CenterContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("4_4inx5")
 

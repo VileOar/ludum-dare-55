@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4x7pedj551vr"]
 
 [ext_resource type="Script" path="res://src/entities/cat_head.gd" id="1_efdfu"]
-[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="2_5l43q"]
+[ext_resource type="Texture2D" uid="uid://4qe81t2bevmo" path="res://assets/game_assets/Personagens/cat_head.png" id="2_sdui5"]
 
 [node name="CatHead" type="Node2D"]
 script = ExtResource("1_efdfu")
 _fov_range = 350
 _fov_angle = 20
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_5l43q")
+position = Vector2(16, 0)
+rotation = 3.14159
+texture = ExtResource("2_sdui5")
 
 [node name="Area2D" type="Area2D" parent="."]
 

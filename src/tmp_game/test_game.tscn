@@ -1,23 +1,15 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctvekxs34l1oc"]
+[gd_scene load_steps=14 format=3 uid="uid://ctvekxs34l1oc"]
 
 [ext_resource type="Texture2D" uid="uid://dw1chptfanwiu" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
+[ext_resource type="Script" path="res://src/tmp_game/test_game.gd" id="1_ond2o"]
 [ext_resource type="Texture2D" uid="uid://cqwalqi2b701v" path="res://assets/game_assets/HUD + Background/hud_bgd.png" id="2_mhi7n"]
 [ext_resource type="Texture2D" uid="uid://cfhxcnj27ua1c" path="res://assets/_tmp/Artboard_23.png" id="2_v41xp"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
 [ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
-[ext_resource type="Script" path="res://src/test_map.gd" id="3_h0k1g"]
-[ext_resource type="Shader" path="res://assets/shaders/strength_indicator.gdshader" id="4_2pbe1"]
-[ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="4_a66cf"]
-[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="6_us20d"]
-[ext_resource type="Script" path="res://src/entities/player/throw_meter.gd" id="7_klfdo"]
-[ext_resource type="Script" path="res://src/tmp_game/game_logic.gd" id="8_qwjbq"]
+[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="6_ysmt0"]
+[ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="8_wr4eh"]
 [ext_resource type="Script" path="res://src/tmp_game/cat_tmp.gd" id="9_0xhhd"]
 [ext_resource type="Texture2D" uid="uid://fvi6dxglrfwk" path="res://assets/game_assets/cat.png" id="10_bsvaa"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_qis21"]
-shader = ExtResource("4_2pbe1")
-shader_parameter/percent = 0.0
-shader_parameter/low_alpha = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8yyy"]
 size = Vector2(32, 1080)
@@ -25,14 +17,12 @@ size = Vector2(32, 1080)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73ob8"]
 size = Vector2(1920, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6i15q"]
-size = Vector2(224, 224)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vecav"]
 radius = 42.0
 height = 256.0
 
 [node name="TestGame" type="Node2D"]
+script = ExtResource("1_ond2o")
 
 [node name="Background" type="ColorRect" parent="."]
 offset_right = 40.0
@@ -55,78 +45,65 @@ texture = ExtResource("2_v41xp")
 script = ExtResource("2_yiwpu")
 
 [node name="Hud" parent="." instance=ExtResource("3_fgk8y")]
-
-[node name="TestMap" type="Node2D" parent="."]
-script = ExtResource("3_h0k1g")
-ball_scene = ExtResource("4_a66cf")
-
-[node name="StrengthIndicator" type="Sprite2D" parent="TestMap"]
 unique_name_in_owner = true
-z_index = 1
-material = SubResource("ShaderMaterial_qis21")
-position = Vector2(320, 576)
-scale = Vector2(1, 0.1875)
-texture = ExtResource("6_us20d")
-offset = Vector2(64, 0)
-script = ExtResource("7_klfdo")
 
-[node name="WallLeft" type="StaticBody2D" parent="TestMap"]
+[node name="Walls" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestMap/WallLeft"]
+[node name="WallLeft" type="StaticBody2D" parent="Walls"]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
 position = Vector2(0, 540)
 shape = SubResource("RectangleShape2D_a8yyy")
 
-[node name="WallRight" type="StaticBody2D" parent="TestMap"]
+[node name="WallRight" type="StaticBody2D" parent="Walls"]
 position = Vector2(1920, 0)
+collision_layer = 4
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestMap/WallRight"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
 position = Vector2(0, 540)
 shape = SubResource("RectangleShape2D_a8yyy")
 
-[node name="WallTop" type="StaticBody2D" parent="TestMap"]
+[node name="WallTop" type="StaticBody2D" parent="Walls"]
+collision_layer = 4
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestMap/WallTop"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
 position = Vector2(960, 0)
 shape = SubResource("RectangleShape2D_73ob8")
 
-[node name="WallBottom" type="StaticBody2D" parent="TestMap"]
+[node name="WallBottom" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 1080)
+collision_layer = 4
+collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TestMap/WallBottom"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
 position = Vector2(960, 0)
 shape = SubResource("RectangleShape2D_73ob8")
 
-[node name="Player" type="Node2D" parent="."]
-position = Vector2(213, 353)
-script = ExtResource("8_qwjbq")
+[node name="Player" parent="." instance=ExtResource("6_ysmt0")]
+unique_name_in_owner = true
+position = Vector2(128, 544)
 
-[node name="Icon" type="Sprite2D" parent="Player"]
-modulate = Color(1, 1, 1, 0.52549)
-scale = Vector2(1.7, 1.7)
-texture = ExtResource("6_us20d")
+[node name="Cat" parent="." instance=ExtResource("8_wr4eh")]
+position = Vector2(1032, 432)
 
-[node name="EndGameArea" type="Area2D" parent="Player"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="AreaOfCollision" type="CollisionShape2D" parent="Player/EndGameArea"]
-shape = SubResource("RectangleShape2D_6i15q")
-
-[node name="Cat" type="Node2D" parent="."]
-position = Vector2(600, 340)
+[node name="CatTMP" type="Node2D" parent="."]
+visible = false
+position = Vector2(592, 544)
 script = ExtResource("9_0xhhd")
 
-[node name="CatBody" type="RigidBody2D" parent="Cat"]
+[node name="CatBody" type="RigidBody2D" parent="CatTMP"]
 collision_layer = 2
 collision_mask = 2
 gravity_scale = 0.0
 
-[node name="Icon" type="Sprite2D" parent="Cat/CatBody"]
+[node name="Icon" type="Sprite2D" parent="CatTMP/CatBody"]
 modulate = Color(1, 1, 1, 0.564706)
 texture = ExtResource("10_bsvaa")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/CatBody"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatTMP/CatBody"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_vecav")
-
-[connection signal="body_entered" from="Player/EndGameArea" to="Player" method="_on_end_game_area_body_entered"]

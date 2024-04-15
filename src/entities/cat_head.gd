@@ -103,7 +103,7 @@ func _turn_towards(new_rotation):
 
 
 func _draw() -> void:
-	draw_colored_polygon(_fov_polygon, Color.RED)
+	draw_colored_polygon(_fov_polygon, Color(Color.RED, 0.6))
 
 
 ## build FOV polygon

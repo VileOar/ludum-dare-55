@@ -1,19 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://c47hc7nk4cpwu"]
+[gd_scene load_steps=7 format=3 uid="uid://c47hc7nk4cpwu"]
 
 [ext_resource type="Script" path="res://src/cat/cat.gd" id="1_u8x1r"]
-[ext_resource type="Texture2D" uid="uid://vx8m1wbrwkog" path="res://assets/cat_body.png" id="2_yjmdl"]
+[ext_resource type="Texture2D" uid="uid://dvgtnki3euhis" path="res://assets/game_assets/Personagens/cat_shadow.png" id="2_h0dgj"]
 [ext_resource type="PackedScene" uid="uid://c4x7pedj551vr" path="res://src/entities/cat_head.tscn" id="3_e0i2g"]
+[ext_resource type="Texture2D" uid="uid://c0koi0s35ry2g" path="res://assets/game_assets/Personagens/cat_body.png" id="3_mx3lx"]
+[ext_resource type="Texture2D" uid="uid://cplxhfueo2xj8" path="res://assets/game_assets/Personagens/cat_tail.png" id="5_y3p6y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bok6h"]
 radius = 25.0
 height = 128.0
 
 [node name="Cat" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_u8x1r")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+rotation = -3.14159
+texture = ExtResource("2_h0dgj")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("2_yjmdl")
+rotation = 3.14159
+texture = ExtResource("3_mx3lx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -26,8 +34,13 @@ one_shot = true
 one_shot = true
 
 [node name="CatHead" parent="." instance=ExtResource("3_e0i2g")]
-modulate = Color(1, 1, 1, 0.580392)
-position = Vector2(50, 0)
+position = Vector2(56, 0)
+
+[node name="Tail" type="Sprite2D" parent="."]
+position = Vector2(-56, 0)
+rotation = 3.14159
+texture = ExtResource("5_y3p6y")
+offset = Vector2(48, 0)
 
 [connection signal="timeout" from="TempStopTimer" to="." method="_on_temp_stop_timer_timeout"]
 [connection signal="timeout" from="WanderStopTimer" to="." method="_on_wander_stop_timer_timeout"]

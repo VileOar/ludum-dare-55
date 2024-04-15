@@ -8,7 +8,7 @@ var velocity : Vector2
 func _ready():
 	velocity[0] = -20000
 	velocity[1] = 0
-	move_cat()
+	#move_cat()
 
 
 func move_cat():

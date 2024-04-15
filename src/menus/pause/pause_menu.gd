@@ -7,7 +7,7 @@ extends Control
 @onready var menu_button : Button = %MenuButton
 @onready var exit_button : Button = %ExitButton
 
-@onready var main_menu_scene : PackedScene = preload("res://src/main_menu/MainMenu.tscn")
+@onready var main_menu_scene : PackedScene = preload("res://src/menus/main_menu/MainMenu.tscn")
 
 
 func _ready():

@@ -34,3 +34,9 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="viewport"
 <<<<<<<HEADwindow/size/viewport_width=1920
+
+[layer_names]
+
+2d_physics/layer_1="objects"
+2d_physics/layer_2="cat"
+2d_physics/layer_3="walls"
