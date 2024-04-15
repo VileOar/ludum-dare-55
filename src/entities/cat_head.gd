@@ -60,32 +60,37 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	# turn towards target rotation
-	if !is_equal_approx(_target_rotation, global_rotation):
+	if !is_equal_approx(_target_rotation, rotation):
 		# rotate by current speed
-		global_rotation = lerp_angle(global_rotation, _target_rotation, TURN_WEIGHT)
+		rotation = lerp_angle(rotation, _target_rotation, TURN_WEIGHT)
 	
 	match _turn_state:
 		TurnStates.STOP:
-			if !is_equal_approx(global_rotation, get_parent().global_rotation):
-				_turn_towards(get_parent().global_rotation)
+			if !is_equal_approx(global_rotation, 0.0):
+				_turn_towards(0.0)
 		TurnStates.IDLE, TurnStates.MOVE:
 			# randomly choose new target rotation
 			var chance = randf()
 			if _turn_state == TurnStates.IDLE:
 				if chance < IDLE_TURN_CHANCE:
-					var new_rot = get_parent().global_rotation + randf_range(-IDLE_TURN_RANGE, IDLE_TURN_RANGE)
+					var new_rot = randf_range(-IDLE_TURN_RANGE, IDLE_TURN_RANGE)
 					_turn_towards(new_rot)
 			elif _turn_state == TurnStates.MOVE:
 				if chance < MOVE_TURN_CHANCE:
-					var new_rot = get_parent().global_rotation + randf_range(-MOVE_TURN_RANGE, MOVE_TURN_RANGE)
+					var new_rot = randf_range(-MOVE_TURN_RANGE, MOVE_TURN_RANGE)
 					_turn_towards(new_rot)
 		TurnStates.LOOK_AT, TurnStates.LOOK_AWAY:
 			var direction_vector = global_position.direction_to(_locked_position)
 			if _turn_state == TurnStates.LOOK_AWAY: # if away, look in the other direction
 				direction_vector = direction_vector.rotated(PI)
 			
+			# convert from global rotation to local rotation
+			var new_rot = transform.x.angle_to(direction_vector)
+			new_rot -= global_rotation
+			
 			# will always try to look at or away from locked_position, if that does not exceed limits
-			var new_rot = clamp(transform.x.angle_to(direction_vector), -_MAX_TURN_ANGLE, _MAX_TURN_ANGLE)
+			new_rot = clamp(new_rot, -_MAX_TURN_ANGLE, _MAX_TURN_ANGLE)
+			
 			_turn_towards(new_rot)
 
 
@@ -94,7 +99,7 @@ func _physics_process(_delta: float) -> void:
 func set_turn_state(new_state: TurnStates = TurnStates.STOP, look_at_vec:= Vector2.ZERO) -> void:
 	_turn_state = new_state
 	_locked_position = look_at_vec
-	_turn_towards(get_parent().global_rotation)
+	_turn_towards(0.0)
 
 
 ## starts turning in a new direction

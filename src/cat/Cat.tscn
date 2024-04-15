@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c47hc7nk4cpwu"]
+[gd_scene load_steps=9 format=3 uid="uid://c47hc7nk4cpwu"]
 
 [ext_resource type="Script" path="res://src/cat/cat.gd" id="1_u8x1r"]
 [ext_resource type="Texture2D" uid="uid://dvgtnki3euhis" path="res://assets/game_assets/Personagens/cat_shadow.png" id="2_h0dgj"]
@@ -9,6 +9,12 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bok6h"]
 radius = 25.0
 height = 128.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83n2w"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eilqs"]
+radius = 16.0
+height = 96.0
 
 [node name="Cat" type="CharacterBody2D"]
 collision_layer = 2
@@ -36,11 +42,39 @@ one_shot = true
 [node name="CatHead" parent="." instance=ExtResource("3_e0i2g")]
 position = Vector2(56, 0)
 
-[node name="Tail" type="Sprite2D" parent="."]
-position = Vector2(-56, 0)
-rotation = 3.14159
+[node name="TailReference" type="StaticBody2D" parent="."]
+position = Vector2(-48, 0)
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TailReference"]
+shape = SubResource("RectangleShape2D_83n2w")
+
+[node name="Tail" type="RigidBody2D" parent="."]
+visible = false
+position = Vector2(-100, 0)
+collision_layer = 0
+collision_mask = 0
+mass = 0.3
+gravity_scale = 0.0
+metadata/_edit_group_ = true
+
+[node name="Sprite" type="Sprite2D" parent="Tail"]
+rotation = -3.14159
 texture = ExtResource("5_y3p6y")
-offset = Vector2(48, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tail"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eilqs")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+node_a = NodePath("../TailReference")
+node_b = NodePath("../Tail")
+bias = 0.9
+disable_collision = false
+angular_limit_enabled = true
+angular_limit_lower = -0.698132
+angular_limit_upper = 0.698132
 
 [connection signal="timeout" from="TempStopTimer" to="." method="_on_temp_stop_timer_timeout"]
 [connection signal="timeout" from="WanderStopTimer" to="." method="_on_wander_stop_timer_timeout"]
