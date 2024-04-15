@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://gkb307hkjv4f"]
+[gd_scene load_steps=18 format=3 uid="uid://gkb307hkjv4f"]
 
 [ext_resource type="Script" path="res://src/menus/main_menu/main_menu.gd" id="1_w2pxe"]
 [ext_resource type="Texture2D" uid="uid://b3ane0rwa5rxm" path="res://assets/menus_backgrounds/cat_menudarkened2.png" id="2_0p8xs"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://wg26fathbma7" path="res://src/menus/options/options_menu.tscn" id="4_dhve8"]
 [ext_resource type="Texture2D" uid="uid://cfuwjb7ctqu08" path="res://assets/game_assets/folhas/relva3.png" id="4_leq5d"]
 [ext_resource type="PackedScene" uid="uid://dxt4jp5jeoqvf" path="res://src/menus/credits/credits.tscn" id="8_5bmg1"]
+[ext_resource type="PackedScene" uid="uid://ci5dx05toechq" path="res://src/menus/HowToPlay/HowToPlay.tscn" id="9_jn38u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36kx8"]
 texture = ExtResource("2_0p8xs")
@@ -71,6 +72,7 @@ offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_8ptmd")
 
 [node name="ForDummies" type="MarginContainer" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_constants/margin_left = 16
@@ -292,4 +294,9 @@ layout_mode = 0
 visible = false
 layout_mode = 1
 
+[node name="HowToPlay" parent="." instance=ExtResource("9_jn38u")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
