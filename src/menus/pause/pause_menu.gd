@@ -6,11 +6,13 @@ extends Control
 @onready var options_menu_node : OptionsMenu = $OptionsMenu
 @onready var menu_button : Button = %MenuButton
 @onready var exit_button : Button = %ExitButton
+@onready var _pause_menu = $"."
 
-@onready var main_menu_scene : PackedScene = preload("res://src/menus/main_menu/MainMenu.tscn")
+var main_menu_scene : PackedScene
 
 
 func _ready():
+	main_menu_scene = load("res://src/menus/main_menu/MainMenu.tscn")
 	options_menu_node.visible = false
 # Connects buttons to functions
 	continue_button.button_down.connect(_on_continue_pressed)
@@ -20,6 +22,14 @@ func _ready():
 
 func _play_click_sfx() -> void:
 	SoundManager.instance.play_click_sfx()
+
+## Deals with input to pause the game and show menu
+func _input(_event):
+	if Input.is_action_just_pressed("pause_game"):
+		_pause_menu.visible = not _pause_menu.visible
+		get_tree().paused = not get_tree().paused
+
+
 
 # Starts game
 func _on_continue_pressed() -> void:

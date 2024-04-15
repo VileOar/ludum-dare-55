@@ -1,12 +1,12 @@
 [gd_scene load_steps=12 format=3 uid="uid://cfroe4r8671ax"]
 
-[ext_resource type="Script" path="res://src/menus/HUD/hud_logic.gd" id="1_1og0p"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="1_a54q7"]
+[ext_resource type="Script" path="res://src/menus/HUD/game_logic.gd" id="1_qea4r"]
 [ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_wcyvq"]
 [ext_resource type="Texture2D" uid="uid://carb13mp6c6r2" path="res://assets/game_assets/HUD + Background/stone_nextItem.png" id="3_agbgx"]
-[ext_resource type="Texture2D" uid="uid://g7oym0e86ijx" path="res://assets/game_assets/Objetos/tamanho maior/banana.png" id="4_4inx5"]
 [ext_resource type="Texture2D" uid="uid://u2m12ex4fs0" path="res://assets/game_assets/HUD + Background/clock_under_Bar_v3.png" id="5_3ucxs"]
 [ext_resource type="Texture2D" uid="uid://dhgbhd68upedm" path="res://assets/game_assets/HUD + Background/clock_noBar.png" id="5_ab23b"]
+[ext_resource type="Texture2D" uid="uid://bkveq4hkpqaqi" path="res://assets/game_assets/Objetos/tamanho maior/empty.png" id="5_rbc3y"]
 [ext_resource type="Script" path="res://src/menus/HUD/ui_timer.gd" id="6_p0af5"]
 [ext_resource type="Texture2D" uid="uid://b4n4ryq4v67fx" path="res://assets/game_assets/HUD + Background/clock_bar_v2.png" id="9_fhhbk"]
 
@@ -21,7 +21,7 @@ theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
-script = ExtResource("1_1og0p")
+script = ExtResource("1_qea4r")
 
 [node name="TimeTrial" type="Node" parent="."]
 script = ExtResource("1_a54q7")
@@ -57,9 +57,10 @@ texture = ExtResource("3_agbgx")
 [node name="NextObject" type="TextureRect" parent="TopRightContainer/MarginContainer/TopRightContainer/CenterContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-texture = ExtResource("4_4inx5")
+texture = ExtResource("5_rbc3y")
 
 [node name="BottomRightContainer" type="HBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 alignment = 2
 

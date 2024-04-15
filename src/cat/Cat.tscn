@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c47hc7nk4cpwu"]
+[gd_scene load_steps=10 format=3 uid="uid://c47hc7nk4cpwu"]
 
 [ext_resource type="Script" path="res://src/cat/cat.gd" id="1_u8x1r"]
 [ext_resource type="Texture2D" uid="uid://dvgtnki3euhis" path="res://assets/game_assets/Personagens/cat_shadow.png" id="2_h0dgj"]
 [ext_resource type="PackedScene" uid="uid://c4x7pedj551vr" path="res://src/entities/cat_head.tscn" id="3_e0i2g"]
 [ext_resource type="Texture2D" uid="uid://c0koi0s35ry2g" path="res://assets/game_assets/Personagens/cat_body.png" id="3_mx3lx"]
+[ext_resource type="Script" path="res://src/cat/tail_anim.gd" id="5_u67cr"]
 [ext_resource type="Texture2D" uid="uid://cplxhfueo2xj8" path="res://assets/game_assets/Personagens/cat_tail.png" id="5_y3p6y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bok6h"]
@@ -11,6 +12,7 @@ radius = 25.0
 height = 128.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_83n2w"]
+size = Vector2(40, 20)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eilqs"]
 radius = 16.0
@@ -43,20 +45,29 @@ one_shot = true
 position = Vector2(56, 0)
 
 [node name="TailReference" type="StaticBody2D" parent="."]
-position = Vector2(-48, 0)
+position = Vector2(-32, 0)
 collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TailReference"]
 shape = SubResource("RectangleShape2D_83n2w")
 
+[node name="PinJoint2D" type="PinJoint2D" parent="."]
+position = Vector2(-52, 0)
+node_a = NodePath("../TailReference")
+node_b = NodePath("../Tail")
+bias = 0.9
+angular_limit_enabled = true
+angular_limit_lower = -2.79253
+angular_limit_upper = 2.79253
+
 [node name="Tail" type="RigidBody2D" parent="."]
-visible = false
 position = Vector2(-100, 0)
 collision_layer = 0
 collision_mask = 0
-mass = 0.3
+mass = 0.5
 gravity_scale = 0.0
+script = ExtResource("5_u67cr")
 metadata/_edit_group_ = true
 
 [node name="Sprite" type="Sprite2D" parent="Tail"]
@@ -67,15 +78,11 @@ texture = ExtResource("5_y3p6y")
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_eilqs")
 
-[node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_a = NodePath("../TailReference")
-node_b = NodePath("../Tail")
-bias = 0.9
-disable_collision = false
-angular_limit_enabled = true
-angular_limit_lower = -0.698132
-angular_limit_upper = 0.698132
+[node name="Timer" type="Timer" parent="Tail"]
+wait_time = 1.2
+autostart = true
 
 [connection signal="timeout" from="TempStopTimer" to="." method="_on_temp_stop_timer_timeout"]
 [connection signal="timeout" from="WanderStopTimer" to="." method="_on_wander_stop_timer_timeout"]
 [connection signal="object_detected" from="CatHead" to="." method="_on_cat_head_object_detected"]
+[connection signal="timeout" from="Tail/Timer" to="Tail" method="_on_timer_timeout"]
