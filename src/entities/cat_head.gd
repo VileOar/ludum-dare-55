@@ -59,6 +59,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	
 	# turn towards target rotation
 	if !is_equal_approx(_target_rotation, rotation):
 		# rotate by current speed
@@ -85,7 +86,7 @@ func _physics_process(_delta: float) -> void:
 				direction_vector = direction_vector.rotated(PI)
 			
 			# convert from global rotation to local rotation
-			var new_rot = transform.x.angle_to(direction_vector)
+			var new_rot = global_transform.x.angle_to(direction_vector)
 			new_rot -= global_rotation
 			
 			# will always try to look at or away from locked_position, if that does not exceed limits
