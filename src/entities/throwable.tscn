@@ -7,6 +7,7 @@
 bounce = 0.2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f3rjm"]
+resource_local_to_scene = true
 radius = 32.0
 
 [node name="Throwable" type="RigidBody2D"]

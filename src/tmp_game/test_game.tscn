@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cfhxcnj27ua1c" path="res://assets/_tmp/Artboard_23.png" id="2_v41xp"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
 [ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
-[ext_resource type="PackedScene" path="res://src/test_map.tscn" id="7_nduo8"]
+[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="8_foq5f"]
 [ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="8_wr4eh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8yyy"]
@@ -99,10 +99,9 @@ position = Vector2(1708, 96)
 rotation = 0.479966
 shape = SubResource("RectangleShape2D_a05jt")
 
-[node name="Player" parent="." instance=ExtResource("7_nduo8")]
-unique_name_in_owner = true
-position = Vector2(275, 574)
-
 [node name="Cat" parent="." instance=ExtResource("8_wr4eh")]
-position = Vector2(1813, 612)
+position = Vector2(1763, 629)
 rotation = 3.14159
+
+[node name="Player" parent="." instance=ExtResource("8_foq5f")]
+position = Vector2(344, 537)
