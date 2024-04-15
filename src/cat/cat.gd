@@ -85,6 +85,9 @@ func _physics_process(delta):
 		if current_state == States.MOVING_TRUE:
 			custom_target_pos = target_object.position
 			variate_waypoint_timer = 0
+			if !target_object.linear_velocity.is_zero_approx():
+				var distance = (custom_target_pos-position).length()
+				rot_coef = (minimum_distance / BASE_MOV_SPEED) / (distance / (BASE_MOV_SPEED * move_speed_mltplr) / (target_angle_dif / 2))
 		else:
 			variate_waypoint_timer += delta
 			if variate_waypoint_timer >= variate_waypoint_interval:
@@ -96,13 +99,17 @@ func _physics_process(delta):
 
 		if abs(target_angle_dif) > target_angle_tolerance:
 			target_angle_dif = transform.x.angle_to(custom_target_pos-position)
+			print(target_angle_dif)
 			var modifier : int = sign(target_angle_dif)
 			rotation = move_toward(rotation, rotation + modifier * target_angle_dif, rot_coef * rot_speed)
 
 		if (target_object.position-position).length() <= minimum_distance:
 			current_state = States.IDLING
 			head_ref.set_turn_state(CatHead.TurnStates.IDLE)
-	
+
+
+# || --- Waypoint Management --- ||
+
 
 func set_new_waypoint(new_obj : Throwable, pos_ref : Vector2, variant : bool = false):
 	if variant:
