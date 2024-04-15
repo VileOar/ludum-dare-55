@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cfhxcnj27ua1c" path="res://assets/_tmp/Artboard_23.png" id="2_v41xp"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
 [ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
-[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="7_nduo8"]
+[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/test_map.tscn" id="7_nduo8"]
 [ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="8_wr4eh"]
 [ext_resource type="Script" path="res://src/tmp_game/cat_tmp.gd" id="9_0xhhd"]
 [ext_resource type="Texture2D" uid="uid://fvi6dxglrfwk" path="res://assets/game_assets/cat.png" id="10_bsvaa"]
@@ -103,7 +103,6 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallHudRightTop"]
 position = Vector2(1708, 96)
 rotation = 0.479966
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_a05jt")
 
 [node name="Player" parent="." instance=ExtResource("7_nduo8")]
