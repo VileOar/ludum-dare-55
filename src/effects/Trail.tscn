@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcadh488kc83i"]
+
+[ext_resource type="Script" path="res://src/effects/trail.gd" id="1_f8cen"]
+
+[sub_resource type="Curve" id="Curve_u4dsm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_u1w83"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[node name="Trail" type="Line2D"]
+top_level = true
+z_index = -1
+width_curve = SubResource("Curve_u4dsm")
+gradient = SubResource("Gradient_u1w83")
+script = ExtResource("1_f8cen")
+MAX_LENGTH = 20

@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://cfga545fyyrkd"]
+[gd_scene load_steps=9 format=3 uid="uid://cfga545fyyrkd"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_5ys6p"]
 [ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="2_0xakd"]
 [ext_resource type="Shader" path="res://assets/shaders/strength_indicator.gdshader" id="3_gykpu"]
 [ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="4_d0mwv"]
 [ext_resource type="Script" path="res://src/entities/player/throw_meter.gd" id="5_8jxmx"]
+[ext_resource type="Texture2D" uid="uid://cgrn70rae5m7o" path="res://assets/game_assets/Personagens/character.png" id="6_u4c4v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qis21"]
 shader = ExtResource("3_gykpu")
 shader_parameter/percent = 0.0
 shader_parameter/low_alpha = 0.3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5g6x"]
+size = Vector2(192, 192)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5ys6p")
@@ -26,5 +30,14 @@ offset = Vector2(64, 0)
 script = ExtResource("5_8jxmx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_d0mwv")
+texture = ExtResource("6_u4c4v")
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(32, 0)
+shape = SubResource("RectangleShape2D_v5g6x")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

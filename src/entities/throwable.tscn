@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyi87gjn0jmf6"]
+[gd_scene load_steps=5 format=3 uid="uid://cyi87gjn0jmf6"]
 
 [ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="1_6dvde"]
+[ext_resource type="Script" path="res://src/entities/throwable.gd" id="1_bouep"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4vfcx"]
 bounce = 0.2
@@ -9,13 +10,14 @@ bounce = 0.2
 radius = 32.0
 
 [node name="Throwable" type="RigidBody2D"]
+collision_mask = 5
 mass = 1.5
 physics_material_override = SubResource("PhysicsMaterial_4vfcx")
 gravity_scale = 0.0
 linear_damp = 1.0
+script = ExtResource("1_bouep")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_6dvde")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -2,7 +2,11 @@
 
 importer="texture"
 type="CompressedTexture2D"
+<<<<<<< HEAD
 uid="uid://0aauteibjdkb"
+=======
+uid="uid://c2r7d2srggj4p"
+>>>>>>> master
 path="res://.godot/imported/tuna.png-1ad2433f48bca98c681b971fd65b70c6.ctex"
 metadata={
 "vram_texture": false

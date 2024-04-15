@@ -12,9 +12,9 @@ config_version=5
 
 config/name="LudumDare_55"
 config/version="0.0.001"
-run/main_scene="res://src/main_menu/MainMenu.tscn"
+run/main_scene="res://src/menus/main_menu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
-boot_splash/image="res://assets/_tmp/print-statement.png"
+boot_splash/image="res://assets/game_assets/identity/bootsplash_v2.png"
 config/icon="res://icon.svg"
 
 [audio]
@@ -31,5 +31,15 @@ Util="*res://src/util/util.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+<<<<<<< HEAD
 window/size/mode=2
+=======
+>>>>>>> master
 window/stretch/mode="viewport"
+<<<<<<<HEADwindow/size/viewport_width=1920
+
+[layer_names]
+
+2d_physics/layer_1="objects"
+2d_physics/layer_2="cat"
+2d_physics/layer_3="walls"

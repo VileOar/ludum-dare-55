@@ -34,7 +34,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var mouse_pos = get_global_mouse_position()
 	
-	var dir = mouse_pos - position
+	var dir = mouse_pos - global_position
 	
 	# point strength throw indicator towards mouse
 	rotation = dir.angle()

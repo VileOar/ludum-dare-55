@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://crm0ac1yueb1x"]
+
+[ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="1_unpc6"]
+[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="2_3pye6"]
+[ext_resource type="Script" path="res://src/DebugSquare.gd" id="3_xp18w"]
+[ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="4_qadpw"]
+
+[node name="TestRoom" type="Node2D"]
+
+[node name="Cat" parent="." node_paths=PackedStringArray("debug_target") instance=ExtResource("1_unpc6")]
+position = Vector2(107, 56)
+debug_target = NodePath("../Object2")
+
+[node name="Object2" type="Sprite2D" parent="."]
+position = Vector2(1022, 95.9999)
+scale = Vector2(0.16, 0.16)
+texture = ExtResource("2_3pye6")
+script = ExtResource("3_xp18w")
+
+[node name="Throwable" parent="." instance=ExtResource("4_qadpw")]
+position = Vector2(442, 270)
