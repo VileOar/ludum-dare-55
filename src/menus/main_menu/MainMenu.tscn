@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gkb307hkjv4f"]
+[gd_scene load_steps=17 format=3 uid="uid://gkb307hkjv4f"]
 
 [ext_resource type="Script" path="res://src/menus/main_menu/main_menu.gd" id="1_w2pxe"]
 [ext_resource type="Texture2D" uid="uid://b3ane0rwa5rxm" path="res://assets/menus_backgrounds/cat_menudarkened2.png" id="2_0p8xs"]
@@ -7,6 +7,7 @@
 [ext_resource type="Theme" uid="uid://bvdtdbyldbs20" path="res://src/ui_and_themes/title_default_ui_theme.tres" id="3_cxp6t"]
 [ext_resource type="PackedScene" uid="uid://wg26fathbma7" path="res://src/menus/options/options_menu.tscn" id="4_dhve8"]
 [ext_resource type="Texture2D" uid="uid://cfuwjb7ctqu08" path="res://assets/game_assets/folhas/relva3.png" id="4_leq5d"]
+[ext_resource type="PackedScene" uid="uid://dxt4jp5jeoqvf" path="res://src/menus/credits/credits.tscn" id="8_5bmg1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36kx8"]
 texture = ExtResource("2_0p8xs")
@@ -225,7 +226,6 @@ theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oo7in")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_67424")
-disabled = true
 text = "Credits"
 alignment = 0
 
@@ -287,3 +287,9 @@ randomness = 0.6
 [node name="OptionsMenu" parent="." instance=ExtResource("4_dhve8")]
 visible = false
 layout_mode = 0
+
+[node name="Credits" parent="." instance=ExtResource("8_5bmg1")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

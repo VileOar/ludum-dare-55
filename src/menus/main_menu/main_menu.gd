@@ -4,6 +4,7 @@ extends Control
 @onready var start_game_button : Button = $MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/PlayButton
 @onready var options_menu_button : Button = $MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/OptionsButton
 @onready var options_menu_node : OptionsMenu = $OptionsMenu
+@onready var credits = $Credits
 @onready var exit_button : Button = $MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/ExitButton
 
 @onready var game_scene : PackedScene = preload("res://src/tmp_game/test_game.tscn")
@@ -33,9 +34,14 @@ func _on_options_pressed() -> void:
 	_play_click_sfx()
 	options_menu_node.visible = true
 	
+func _on_credits_button_pressed():
+	credits.visible = true
+	
 	
 # Exists game
 func _on_exit_pressed() -> void:
 	_play_click_sfx()
 	get_tree().quit()
+
+
 
