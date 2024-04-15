@@ -1,15 +1,15 @@
 [gd_scene load_steps=16 format=3 uid="uid://ctvekxs34l1oc"]
 
 [ext_resource type="Texture2D" uid="uid://cy6q8owvitxb2" path="res://assets/_tmp/game_background.png" id="1_gck1b"]
-[ext_resource type="Script" path="res://src/test_map.gd" id="2_vt770"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
-[ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="3_s3nvf"]
+[ext_resource type="Script" path="res://src/test_map.gd" id="3_h0k1g"]
 [ext_resource type="Shader" path="res://assets/shaders/strength_indicator.gdshader" id="4_2pbe1"]
-[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="5_7078p"]
-[ext_resource type="Script" path="res://src/entities/throw_meter.gd" id="6_cnvvg"]
-[ext_resource type="Script" path="res://src/tmp_game/game_logic.gd" id="8_kjylk"]
-[ext_resource type="Script" path="res://src/tmp_game/cat_tmp.gd" id="9_77mnh"]
-[ext_resource type="Texture2D" uid="uid://fvi6dxglrfwk" path="res://assets/game_assets/cat.png" id="10_a007a"]
+[ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="4_a66cf"]
+[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="6_us20d"]
+[ext_resource type="Script" path="res://src/entities/player/throw_meter.gd" id="7_klfdo"]
+[ext_resource type="Script" path="res://src/tmp_game/game_logic.gd" id="8_qwjbq"]
+[ext_resource type="Script" path="res://src/tmp_game/cat_tmp.gd" id="9_0xhhd"]
+[ext_resource type="Texture2D" uid="uid://fvi6dxglrfwk" path="res://assets/game_assets/cat.png" id="10_bsvaa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qis21"]
 shader = ExtResource("4_2pbe1")
@@ -43,8 +43,8 @@ texture = ExtResource("1_gck1b")
 script = ExtResource("2_yiwpu")
 
 [node name="TestMap" type="Node2D" parent="."]
-script = ExtResource("2_vt770")
-ball_scene = ExtResource("3_s3nvf")
+script = ExtResource("3_h0k1g")
+ball_scene = ExtResource("4_a66cf")
 
 [node name="StrengthIndicator" type="Sprite2D" parent="TestMap"]
 unique_name_in_owner = true
@@ -52,9 +52,9 @@ z_index = 1
 material = SubResource("ShaderMaterial_qis21")
 position = Vector2(320, 576)
 scale = Vector2(1, 0.1875)
-texture = ExtResource("5_7078p")
+texture = ExtResource("6_us20d")
 offset = Vector2(64, 0)
-script = ExtResource("6_cnvvg")
+script = ExtResource("7_klfdo")
 
 [node name="WallLeft" type="StaticBody2D" parent="TestMap"]
 
@@ -84,12 +84,12 @@ shape = SubResource("RectangleShape2D_73ob8")
 
 [node name="Player" type="Node2D" parent="."]
 position = Vector2(213, 353)
-script = ExtResource("8_kjylk")
+script = ExtResource("8_qwjbq")
 
 [node name="Icon" type="Sprite2D" parent="Player"]
 modulate = Color(1, 1, 1, 0.52549)
 scale = Vector2(1.7, 1.7)
-texture = ExtResource("5_7078p")
+texture = ExtResource("6_us20d")
 
 [node name="EndGameArea" type="Area2D" parent="Player"]
 collision_layer = 0
@@ -100,7 +100,7 @@ shape = SubResource("RectangleShape2D_6i15q")
 
 [node name="Cat" type="Node2D" parent="."]
 position = Vector2(600, 340)
-script = ExtResource("9_77mnh")
+script = ExtResource("9_0xhhd")
 
 [node name="CatBody" type="RigidBody2D" parent="Cat"]
 collision_layer = 2
@@ -109,7 +109,7 @@ gravity_scale = 0.0
 
 [node name="Icon" type="Sprite2D" parent="Cat/CatBody"]
 modulate = Color(1, 1, 1, 0.564706)
-texture = ExtResource("10_a007a")
+texture = ExtResource("10_bsvaa")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Cat/CatBody"]
 rotation = 1.5708
