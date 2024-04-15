@@ -44,8 +44,8 @@ var _fov_polygon: PackedVector2Array
 var _turn_state = TurnStates.IDLE
 ## target rotation value
 var _target_rotation = 0.0
-## locked position in case of Lock state
-var _locked_position = Vector2.ZERO
+## locked object in case of Lock state
+var _locked_obj = null
 
 
 # Called when the node enters the scene tree for the first time.
@@ -80,7 +80,7 @@ func _physics_process(_delta: float) -> void:
 					var new_rot = randf_range(-MOVE_TURN_RANGE, MOVE_TURN_RANGE)
 					_turn_towards(new_rot)
 		TurnStates.LOOK_AT, TurnStates.LOOK_AWAY:
-			var direction_vector = global_position.direction_to(_locked_position)
+			var direction_vector = global_position.direction_to(_locked_obj.position)
 			if _turn_state == TurnStates.LOOK_AWAY: # if away, look in the other direction
 				direction_vector = direction_vector.rotated(PI)
 			
@@ -96,9 +96,9 @@ func _physics_process(_delta: float) -> void:
 
 ## function to set the turn state[br]
 ## it must always be set externally by the main body and resets head turning
-func set_turn_state(new_state: TurnStates = TurnStates.STOP, look_at_vec:= Vector2.ZERO) -> void:
+func set_turn_state(new_state: TurnStates = TurnStates.STOP, obj_to_look= self) -> void:
 	_turn_state = new_state
-	_locked_position = look_at_vec
+	_locked_obj = obj_to_look
 	_turn_towards(0.0)
 
 
