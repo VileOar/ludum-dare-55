@@ -17,7 +17,7 @@ func _ready():
 	resolution_dropdown_button.button_down.connect(_on_resolution_clicked)
 	resolution_dropdown_button.item_selected.connect(_on_resolution_selected)
 	# TODO remove this temp resolution setup
-	#_on_resolution_selected(6)
+	_on_resolution_selected(6)
 
 func _play_click_sfx() -> void:
 	SoundManager.instance.play_click_sfx()
