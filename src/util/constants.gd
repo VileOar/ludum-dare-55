@@ -15,5 +15,5 @@ const items_sprites_folder = "res://assets/game_assets/"
 ## CSV like data that holds stats for all items
 var items_stats = {
 	# id: [mass, radius, sprite_file, attract_value]
-	"tuna": [5, 64, "tuna.png", 1]
+	"tuna": [5, 128, "tuna.png", 1]
 }

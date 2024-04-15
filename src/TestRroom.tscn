@@ -18,4 +18,4 @@ texture = ExtResource("2_3pye6")
 script = ExtResource("3_xp18w")
 
 [node name="Throwable" parent="." instance=ExtResource("4_qadpw")]
-position = Vector2(273, 111)
+position = Vector2(442, 270)
