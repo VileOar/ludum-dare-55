@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bejtoe3wwm5hr"]
+[gd_scene load_steps=16 format=3 uid="uid://bejtoe3wwm5hr"]
 
 [ext_resource type="Script" path="res://src/menus/bad_ending_menu/bad_ending.gd" id="1_cccxb"]
 [ext_resource type="Texture2D" uid="uid://d3535016rbirw" path="res://assets/_tmp/you_died.jpg" id="1_yb2xe"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b8u38etotq5kd" path="res://assets/UIElements/bar_disabled.png" id="3_jls42"]
 [ext_resource type="Texture2D" uid="uid://c5c1yjke2stqy" path="res://assets/UIElements/slider.png" id="4_362yt"]
 [ext_resource type="FontFile" uid="uid://dy6hxh7uq0myf" path="res://assets/fonts/Berlin Sans FB Regular.ttf" id="5_e7jjj"]
+[ext_resource type="AudioStream" uid="uid://b1v07ypolsevr" path="res://assets/music/game_over_theme.ogg" id="7_k537e"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nj37v"]
 texture = ExtResource("1_yb2xe")
@@ -81,6 +82,7 @@ offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_nj37v")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 theme_override_constants/margin_left = 16
@@ -139,3 +141,8 @@ theme_override_font_sizes/font_size = 64
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4gwtt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4612w")
 text = "back to menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_k537e")
+autoplay = true
+mix_target = 2
