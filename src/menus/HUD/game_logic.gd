@@ -35,7 +35,7 @@ func _progress_time(total_seconds : int) -> void:
 	#print("seconds_for_next_value_float = ", seconds_for_next_value_float)
 	#print("total_seconds = ", total_seconds)
 	
-	var progress_to_add = total_seconds - seconds_for_next_value
+	#var progress_to_add = total_seconds - seconds_for_next_value
 	#print("progress_to_add = ", progress_to_add)
 	
 	

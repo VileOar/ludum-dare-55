@@ -2,10 +2,11 @@ extends Control
 
 @onready var menu_button = %MenuButton
 
-@onready var main_menu_scene : PackedScene = preload("res://src/menus/main_menu/MainMenu.tscn")
+var main_menu_scene : PackedScene
 
 
 func _ready():
+	main_menu_scene = load("res://src/menus/main_menu/MainMenu.tscn")
 	menu_button.button_down.connect(_on_menu_pressed)
 
 
