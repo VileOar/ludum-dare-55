@@ -5,10 +5,13 @@ extends Sprite2D
 class_name ThrowMeter
 
 ## max throw power
-const MAX_POWER = 720
+const MAX_POWER = 1600
 
 ## emitted when user releases button
 signal release_throw(impulse_vector)
+
+## whether meter can be used
+var can_throw = true
 
 ## counter for current strength, based on click duration
 var _strength_percent = 0.0:
@@ -43,8 +46,8 @@ func _process(delta: float) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.button_index:
-		if event.pressed: # start pressing
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
+		if event.pressed and can_throw: # start pressing
 			_clicking = true
 		elif _clicking: # if it is during a click
 			_throw()

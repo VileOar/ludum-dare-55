@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c47hc7nk4cpwu"]
+
+[ext_resource type="Script" path="res://src/cat/cat.gd" id="1_u8x1r"]
+[ext_resource type="Texture2D" uid="uid://vx8m1wbrwkog" path="res://assets/cat_body.png" id="2_yjmdl"]
+[ext_resource type="PackedScene" uid="uid://c4x7pedj551vr" path="res://src/entities/cat_head.tscn" id="3_e0i2g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bok6h"]
+radius = 25.0
+height = 128.0
+
+[node name="Cat" type="CharacterBody2D"]
+script = ExtResource("1_u8x1r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_yjmdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_bok6h")
+
+[node name="TempStopTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="WanderStopTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="CatHead" parent="." instance=ExtResource("3_e0i2g")]
+modulate = Color(1, 1, 1, 0.580392)
+position = Vector2(50, 0)
+
+[connection signal="timeout" from="TempStopTimer" to="." method="_on_temp_stop_timer_timeout"]
+[connection signal="timeout" from="WanderStopTimer" to="." method="_on_wander_stop_timer_timeout"]
+[connection signal="object_detected" from="CatHead" to="." method="_on_cat_head_object_detected"]
