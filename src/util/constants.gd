@@ -10,7 +10,8 @@ var resolutions: Dictionary = {"1920x1080[16:9]" : Vector2(1920, 1080),
 								"1024x768[4:3]"  : Vector2(1024, 768),}
 
 ## path to the items sprites folder
-const items_sprites_folder = "res://assets/game_assets/Objetos/tamanho maior/"
+const items_sprites_folder = "res://assets/game_assets/Objetos/tamanho real/"
+const items_icons_folder = "res://assets/game_assets/Objetos/tamanho maior/"
 
 ## data that holds stats for all items
 var items_stats = {
@@ -33,7 +34,9 @@ func get_random_item_id() -> String:
 ## return a texture resource from the given item_id
 func get_item_texture(item_id) -> Texture:
 	return load(items_sprites_folder.path_join(get_item_data(item_id)["texture"]))
-
+## return a texture resource from the given item_id
+func get_item_icon(item_id) -> Texture:
+	return load(items_icons_folder.path_join(get_item_data(item_id)["texture"]))
 
 func _ready() -> void:
 	randomize()

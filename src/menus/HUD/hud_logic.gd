@@ -24,6 +24,7 @@ func _progress_time(total_seconds : int) -> void:
 	# we update
 	var seconds_for_next_value_float = float(TOTAL_GAME_DURATION * (progress_value + 1)) / 100
 	seconds_for_next_value = int(seconds_for_next_value_float)
+	
 	if seconds_for_next_value <= total_seconds:
 		progress_value += 1
 		time_progress.emit(1, true)
@@ -31,4 +32,4 @@ func _progress_time(total_seconds : int) -> void:
 
 ## callback for when a new next item is spawned by the player
 func _on_new_next_item(item_id):
-	%NextObject.texture = Constants.get_item_texture(item_id)
+	%NextObject.texture = Constants.get_item_icon(item_id)
