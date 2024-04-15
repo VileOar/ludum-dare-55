@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctvekxs34l1oc"]
+[gd_scene load_steps=13 format=3 uid="uid://ctvekxs34l1oc"]
 
 [ext_resource type="Texture2D" uid="uid://dw1chptfanwiu" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
 [ext_resource type="Script" path="res://src/tmp_game/test_game.gd" id="1_ond2o"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://cfhxcnj27ua1c" path="res://assets/_tmp/Artboard_23.png" id="2_v41xp"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
 [ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
-[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="8_foq5f"]
+[ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="8_346uj"]
 [ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="8_wr4eh"]
+[ext_resource type="PackedScene" uid="uid://comndc2e2crse" path="res://src/menus/pause/pause_menu.tscn" id="9_wn2cx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8yyy"]
 size = Vector2(32, 1080)
@@ -100,8 +101,19 @@ rotation = 0.479966
 shape = SubResource("RectangleShape2D_a05jt")
 
 [node name="Cat" parent="." instance=ExtResource("8_wr4eh")]
-position = Vector2(1763, 629)
+position = Vector2(1813, 612)
 rotation = 3.14159
 
-[node name="Player" parent="." instance=ExtResource("8_foq5f")]
-position = Vector2(344, 537)
+[node name="Player" parent="." instance=ExtResource("8_346uj")]
+unique_name_in_owner = true
+position = Vector2(337, 549)
+
+[node name="PauseMenu" parent="." instance=ExtResource("9_wn2cx")]
+process_mode = 3
+visible = false
+z_index = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1

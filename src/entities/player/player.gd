@@ -6,6 +6,9 @@ class_name Player
 ## signal sent when a new next item is generated
 signal new_next_item(item_id)
 
+## signal sent when the game finishes on a winning condition
+signal game_was_won
+
 ## scene to instance
 @export var ball_scene: PackedScene
 
@@ -54,5 +57,6 @@ func _set_next_item():
 
 
 func _on_detection_area_body_entered(_body: Node2D) -> void:
+	game_was_won.emit()
 	print("Cat entered winning area!")
 	print("Congralutions, you won!")
