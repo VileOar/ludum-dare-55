@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://ctvekxs34l1oc"]
 
-[ext_resource type="Texture2D" uid="uid://cq1bh8cwlewua" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
-[ext_resource type="Texture2D" uid="uid://cpgckwsoptqvn" path="res://assets/game_assets/HUD + Background/hud_bgd.png" id="2_mhi7n"]
+[ext_resource type="Texture2D" uid="uid://dw1chptfanwiu" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
+[ext_resource type="Texture2D" uid="uid://cqwalqi2b701v" path="res://assets/game_assets/HUD + Background/hud_bgd.png" id="2_mhi7n"]
 [ext_resource type="Texture2D" uid="uid://cfhxcnj27ua1c" path="res://assets/_tmp/Artboard_23.png" id="2_v41xp"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
 [ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
