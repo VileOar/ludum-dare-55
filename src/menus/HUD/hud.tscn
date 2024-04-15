@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://c2bo3jhhx2hw0"]
 
-[node name="Hud" type="Control"]
-layout_mode = 3
+[node name="Hud" type="MarginContainer"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
