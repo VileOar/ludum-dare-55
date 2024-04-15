@@ -1,12 +1,115 @@
-[gd_scene format=3 uid="uid://c2bo3jhhx2hw0"]
+[gd_scene load_steps=12 format=3 uid="uid://cfroe4r8671ax"]
+
+[ext_resource type="Script" path="res://src/menus/HUD/hud_logic.gd" id="1_1og0p"]
+[ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="1_a54q7"]
+[ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_wcyvq"]
+[ext_resource type="Texture2D" uid="uid://dhtcigstkauxv" path="res://assets/game_assets/HUD + Background/stone_nextItem.png" id="3_agbgx"]
+[ext_resource type="Texture2D" uid="uid://cb8ejolo42dom" path="res://assets/game_assets/Objetos/tamanho maior/banana.png" id="4_4inx5"]
+[ext_resource type="Texture2D" uid="uid://u2m12ex4fs0" path="res://assets/game_assets/HUD + Background/clock_under_Bar_v3.png" id="5_3ucxs"]
+[ext_resource type="Texture2D" uid="uid://c7hier6jkilko" path="res://assets/game_assets/HUD + Background/clock_noBar.png" id="5_ab23b"]
+[ext_resource type="Script" path="res://src/menus/HUD/ui_timer.gd" id="6_p0af5"]
+[ext_resource type="Texture2D" uid="uid://b4n4ryq4v67fx" path="res://assets/game_assets/HUD + Background/clock_bar_v2.png" id="9_fhhbk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbsk3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fxh62"]
 
 [node name="Hud" type="MarginContainer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_top = 32
-theme_override_constants/margin_right = 32
-theme_override_constants/margin_bottom = 32
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_1og0p")
+
+[node name="TimeTrial" type="Node" parent="."]
+script = ExtResource("1_a54q7")
+
+[node name="TopRightContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TopRightContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 74
+
+[node name="TopRightContainer" type="VBoxContainer" parent="TopRightContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="TopRightContainer/MarginContainer/TopRightContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gbsk3")
+
+[node name="Label2" type="Label" parent="TopRightContainer/MarginContainer/TopRightContainer"]
+layout_mode = 2
+theme = ExtResource("2_wcyvq")
+text = "next item"
+
+[node name="CenterContainer" type="CenterContainer" parent="TopRightContainer/MarginContainer/TopRightContainer"]
+layout_mode = 2
+
+[node name="NextItemBackground" type="TextureRect" parent="TopRightContainer/MarginContainer/TopRightContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("3_agbgx")
+
+[node name="NextObject" type="TextureRect" parent="TopRightContainer/MarginContainer/TopRightContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("4_4inx5")
+
+[node name="BottomRightContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BottomRightContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 19
+
+[node name="BottomRightContainer" type="VBoxContainer" parent="BottomRightContainer/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Score" type="Label" parent="BottomRightContainer/MarginContainer/BottomRightContainer"]
+layout_mode = 2
+theme = ExtResource("2_wcyvq")
+text = "score: 9000"
+
+[node name="HSeparator" type="HSeparator" parent="BottomRightContainer/MarginContainer/BottomRightContainer"]
+layout_mode = 2
+theme_override_constants/separation = 6
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gbsk3")
+
+[node name="TopLeftContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="TopLeftContainer"]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxEmpty_fxh62")
+
+[node name="MarginContainer" type="MarginContainer" parent="TopLeftContainer"]
+layout_mode = 2
+theme_override_constants/margin_right = 74
+
+[node name="TopRightContainer" type="VBoxContainer" parent="TopLeftContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="TopLeftContainer/MarginContainer/TopRightContainer"]
+layout_mode = 2
+theme_override_constants/separation = 13
+theme_override_styles/separator = SubResource("StyleBoxEmpty_gbsk3")
+
+[node name="TimerContainer" type="CenterContainer" parent="TopLeftContainer/MarginContainer/TopRightContainer"]
+layout_mode = 2
+script = ExtResource("6_p0af5")
+
+[node name="Timer" type="TextureRect" parent="TopLeftContainer/MarginContainer/TopRightContainer/TimerContainer"]
+layout_mode = 2
+texture = ExtResource("5_ab23b")
+
+[node name="TimerBarTexture" type="TextureProgressBar" parent="TopLeftContainer/MarginContainer/TopRightContainer/TimerContainer"]
+layout_mode = 2
+texture_under = ExtResource("5_3ucxs")
+texture_progress = ExtResource("9_fhhbk")
+texture_progress_offset = Vector2(110, 0)

@@ -7,6 +7,7 @@ const START_TIME = 0.0
 
 # Use of signals to decouple ui from script
 #signal time_tick(day : int, hour : int, minute : int)
+signal time_tick(total_seconds : int)
 
 @export var INGAME_SPEED = 1.0
 
@@ -28,11 +29,12 @@ func _process(delta: float):
 func _recalculate_time() -> void:
 	var total_seconds = int(time / INGAME_TO_REALTIME_DURATION)
 	var second = total_seconds % SECONDS_PER_MINUTE
-	var minute = int(float(total_seconds) / SECONDS_PER_MINUTE)
-	var hour = int(float(minute) / MINUTES_PER_HOUR)
+	#var minute = int(float(total_seconds) / SECONDS_PER_MINUTE)
+	#var hour = int(float(minute) / MINUTES_PER_HOUR)
 
 	if past_second != second:
 		past_second = second
-		print(hour, "h:", minute, "m:", second, "s" )
+		#print(hour, "h:", minute, "m:", second, "s" )
 		#time_tick.emit(day, hour, minute)
+		time_tick.emit(total_seconds)
 		

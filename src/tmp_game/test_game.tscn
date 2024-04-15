@@ -1,24 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://ctvekxs34l1oc"]
+[gd_scene load_steps=19 format=3 uid="uid://ctvekxs34l1oc"]
 
-[ext_resource type="Texture2D" uid="uid://dw1chptfanwiu" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
-[ext_resource type="Texture2D" uid="uid://cqwalqi2b701v" path="res://assets/game_assets/HUD + Background/hud_bgd.png" id="2_mhi7n"]
+[ext_resource type="Texture2D" uid="uid://cq1bh8cwlewua" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
+[ext_resource type="Texture2D" uid="uid://cpgckwsoptqvn" path="res://assets/game_assets/HUD + Background/hud_bgd.png" id="2_mhi7n"]
 [ext_resource type="Texture2D" uid="uid://cfhxcnj27ua1c" path="res://assets/_tmp/Artboard_23.png" id="2_v41xp"]
 [ext_resource type="Script" path="res://src/menus/main_menu/time.gd" id="2_yiwpu"]
+[ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
 [ext_resource type="Script" path="res://src/test_map.gd" id="3_h0k1g"]
-[ext_resource type="Texture2D" uid="uid://carb13mp6c6r2" path="res://assets/game_assets/HUD + Background/stone_nextItem.png" id="4_0q4u4"]
 [ext_resource type="Shader" path="res://assets/shaders/strength_indicator.gdshader" id="4_2pbe1"]
 [ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="4_a66cf"]
-[ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="4_vjluf"]
-[ext_resource type="Texture2D" uid="uid://g7oym0e86ijx" path="res://assets/game_assets/Objetos/tamanho maior/banana.png" id="6_37utm"]
 [ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="6_us20d"]
-[ext_resource type="Texture2D" uid="uid://dhgbhd68upedm" path="res://assets/game_assets/HUD + Background/clock_noBar.png" id="7_j21ha"]
 [ext_resource type="Script" path="res://src/entities/player/throw_meter.gd" id="7_klfdo"]
 [ext_resource type="Script" path="res://src/tmp_game/game_logic.gd" id="8_qwjbq"]
 [ext_resource type="Script" path="res://src/tmp_game/cat_tmp.gd" id="9_0xhhd"]
-[ext_resource type="Texture2D" uid="uid://leh3b2cdw04f" path="res://assets/game_assets/HUD + Background/clock_bar.png" id="9_ljy6y"]
 [ext_resource type="Texture2D" uid="uid://fvi6dxglrfwk" path="res://assets/game_assets/cat.png" id="10_bsvaa"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbsk3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qis21"]
 shader = ExtResource("4_2pbe1")
@@ -60,113 +54,7 @@ texture = ExtResource("2_v41xp")
 [node name="TimeTrial" type="Node" parent="."]
 script = ExtResource("2_yiwpu")
 
-[node name="Hud" type="MarginContainer" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-theme_override_constants/margin_left = 16
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 16
-theme_override_constants/margin_bottom = 16
-
-[node name="TopRightContainer" type="HBoxContainer" parent="Hud"]
-layout_mode = 2
-alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Hud/TopRightContainer"]
-layout_mode = 2
-theme_override_constants/margin_right = 74
-
-[node name="TopRightContainer" type="VBoxContainer" parent="Hud/TopRightContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="HSeparator" type="HSeparator" parent="Hud/TopRightContainer/MarginContainer/TopRightContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gbsk3")
-
-[node name="Label" type="Label" parent="Hud/TopRightContainer/MarginContainer/TopRightContainer"]
-layout_mode = 2
-theme = ExtResource("4_vjluf")
-text = "next item"
-visible_ratio = -0.111111
-
-[node name="CenterContainer" type="CenterContainer" parent="Hud/TopRightContainer/MarginContainer/TopRightContainer"]
-layout_mode = 2
-
-[node name="NextItemBackground" type="TextureRect" parent="Hud/TopRightContainer/MarginContainer/TopRightContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("4_0q4u4")
-
-[node name="NextObject" type="TextureRect" parent="Hud/TopRightContainer/MarginContainer/TopRightContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("6_37utm")
-
-[node name="BottomRightContainer" type="VBoxContainer" parent="Hud/TopRightContainer/MarginContainer"]
-visible = false
-layout_mode = 2
-alignment = 2
-
-[node name="Label2" type="Label" parent="Hud/TopRightContainer/MarginContainer/BottomRightContainer"]
-layout_mode = 2
-theme = ExtResource("4_vjluf")
-text = "score: 9000"
-
-[node name="HSeparator" type="HSeparator" parent="Hud/TopRightContainer/MarginContainer/BottomRightContainer"]
-layout_mode = 2
-theme_override_constants/separation = 6
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gbsk3")
-
-[node name="BottomRightContainer" type="HBoxContainer" parent="Hud"]
-layout_mode = 2
-alignment = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Hud/BottomRightContainer"]
-layout_mode = 2
-theme_override_constants/margin_right = 19
-
-[node name="BottomRightContainer" type="VBoxContainer" parent="Hud/BottomRightContainer/MarginContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="Score" type="Label" parent="Hud/BottomRightContainer/MarginContainer/BottomRightContainer"]
-layout_mode = 2
-theme = ExtResource("4_vjluf")
-text = "score: 9000"
-
-[node name="HSeparator" type="HSeparator" parent="Hud/BottomRightContainer/MarginContainer/BottomRightContainer"]
-layout_mode = 2
-theme_override_constants/separation = 6
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gbsk3")
-
-[node name="TopLeftContainer" type="HBoxContainer" parent="Hud"]
-layout_mode = 2
-
-[node name="VSeparator" type="VSeparator" parent="Hud/TopLeftContainer"]
-layout_mode = 2
-theme_override_constants/separation = 12
-
-[node name="MarginContainer" type="MarginContainer" parent="Hud/TopLeftContainer"]
-layout_mode = 2
-theme_override_constants/margin_right = 74
-
-[node name="TopRightContainer" type="VBoxContainer" parent="Hud/TopLeftContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="HSeparator" type="HSeparator" parent="Hud/TopLeftContainer/MarginContainer/TopRightContainer"]
-layout_mode = 2
-theme_override_constants/separation = 13
-theme_override_styles/separator = SubResource("StyleBoxEmpty_gbsk3")
-
-[node name="CenterContainer" type="CenterContainer" parent="Hud/TopLeftContainer/MarginContainer/TopRightContainer"]
-layout_mode = 2
-
-[node name="Timer" type="TextureRect" parent="Hud/TopLeftContainer/MarginContainer/TopRightContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("7_j21ha")
-
-[node name="TimerBar" type="TextureRect" parent="Hud/TopLeftContainer/MarginContainer/TopRightContainer/CenterContainer"]
-layout_mode = 2
-texture = ExtResource("9_ljy6y")
+[node name="Hud" parent="." instance=ExtResource("3_fgk8y")]
 
 [node name="TestMap" type="Node2D" parent="."]
 script = ExtResource("3_h0k1g")
