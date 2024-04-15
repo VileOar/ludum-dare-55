@@ -111,7 +111,7 @@ unique_name_in_owner = true
 position = Vector2(275, 574)
 
 [node name="Cat" parent="." instance=ExtResource("8_wr4eh")]
-position = Vector2(1763, 629)
+position = Vector2(527, 577)
 rotation = 3.14159
 
 [node name="CatTMP" type="Node2D" parent="."]

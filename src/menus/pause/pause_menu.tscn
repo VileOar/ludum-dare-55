@@ -5,11 +5,11 @@
 [ext_resource type="Texture2D" uid="uid://dm5r0ommyyqym" path="res://assets/UIElements/bar.png" id="4_1s3f8"]
 [ext_resource type="PackedScene" uid="uid://wg26fathbma7" path="res://src/menus/options/options_menu.tscn" id="4_etey5"]
 [ext_resource type="Texture2D" uid="uid://c5c1yjke2stqy" path="res://assets/UIElements/slider.png" id="5_0p2kc"]
-[ext_resource type="FontFile" uid="uid://cffuxqihmjsrf" path="res://assets/fonts/RedditMono-VariableFont_wght.ttf" id="6_v6mjo"]
+[ext_resource type="FontFile" uid="uid://dy6hxh7uq0myf" path="res://assets/fonts/Berlin Sans FB Regular.ttf" id="6_v6mjo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evhyb"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iaa3b"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_huusa"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -21,7 +21,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30dqa"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xlsox"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -33,7 +33,7 @@ corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 corner_detail = 6
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nypso"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ny6et"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
@@ -54,9 +54,9 @@ HSlider/icons/grabber = ExtResource("4_1s3f8")
 HSlider/icons/grabber_disabled = ExtResource("3_blh7p")
 HSlider/icons/grabber_highlight = ExtResource("4_1s3f8")
 HSlider/icons/tick = ExtResource("5_0p2kc")
-HSlider/styles/grabber_area = SubResource("StyleBoxFlat_iaa3b")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_30dqa")
-HSlider/styles/slider = SubResource("StyleBoxFlat_nypso")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_huusa")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_xlsox")
+HSlider/styles/slider = SubResource("StyleBoxFlat_ny6et")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_68c8o"]
 
