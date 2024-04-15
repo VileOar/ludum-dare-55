@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 enum States {IDLING, ACTION, MOVING_TRUE, MOVING_TEMP_STOP, MOVING_WANDER}
 
-@export var waypoint : Sprite2D
 @export var debug_target : Sprite2D
 
 var current_state := States.IDLING
@@ -44,11 +43,10 @@ var temp_stop_timer := 0.0
 var wander_timer := 0.0
 @export var wander_odds := 0.2
 
+@onready var head_ref : CatHead = $CatHead
+
 
 func _ready():
-	current_state = States.MOVING_TRUE
-	#set_new_waypoint(waypoint.position)
-
 	temp_stop_timeout_ref.wait_time = temp_stop_time
 	wander_timer_ref.wait_time = wander_time
 		
@@ -63,7 +61,8 @@ func _process(delta):
 			if randf() < temp_stop_odds:
 				current_state = States.MOVING_TEMP_STOP
 				temp_stop_timeout_ref.start()
-				# TODO: Start idle scan behaviour
+				head_ref.set_turn_state(CatHead.TurnStates.IDLE)
+				
 	elif current_state == States.MOVING_TRUE:
 		wander_timer += delta
 
@@ -73,6 +72,7 @@ func _process(delta):
 			if randf() < wander_odds:
 				print("startWander")
 				current_state = States.MOVING_WANDER
+				head_ref.set_turn_state(CatHead.TurnStates.MOVE)
 				wander_timer_ref.start()
 
 
@@ -91,13 +91,16 @@ func _physics_process(delta):
 				variate_waypoint_interval = randf_range(min_variate_waypoint_interval, max_variate_waypoint_interval)
 				set_new_waypoint(variate_waypoint(), true)
 
-				debug_target.set_pos(variate_waypoint())
-
+				#debug_target.set_pos(variate_waypoint())
 
 		if abs(target_angle_dif) > target_angle_tolerance:
 			target_angle_dif = transform.x.angle_to(custom_target_pos-position)
 			var modifier : int = sign(target_angle_dif)
 			rotation = move_toward(rotation, rotation + modifier * target_angle_dif, rot_coef * rot_speed)
+
+		if (target_position-position).length() <= minimum_distance:
+			current_state = States.IDLING
+			head_ref.set_turn_state(CatHead.TurnStates.IDLE)
 	
 
 func set_new_waypoint(new_pos : Vector2, variant : bool = false):
@@ -126,16 +129,23 @@ func variate_waypoint() -> Vector2:
 
 func _on_temp_stop_timer_timeout():
 	current_state = States.MOVING_WANDER
+	head_ref.set_turn_state(CatHead.TurnStates.MOVE)
 
 
 func _on_wander_stop_timer_timeout():
 	print(abs(rad_to_deg(transform.x.angle_to(target_position-position))))
 	if abs(rad_to_deg(transform.x.angle_to(target_position-position))) > wander_end_angle_check:
 		current_state = States.IDLING
+		head_ref.set_turn_state(CatHead.TurnStates.IDLE)
 	else:
 		current_state = States.MOVING_TRUE
+		head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, target_position)
 		set_new_waypoint(target_position, true)
 
 
-func _on_cat_head_object_detected(new_pos):
-	set_new_waypoint(new_pos)
+func _on_cat_head_object_detected(throwable:Variant):
+	print("detect")
+	if throwable.position != target_position:
+		current_state = States.MOVING_TRUE
+		head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, throwable.position)
+		set_new_waypoint(throwable.position)

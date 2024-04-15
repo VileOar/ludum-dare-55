@@ -5,7 +5,8 @@
 
 [node name="CatHead" type="Node2D"]
 script = ExtResource("1_efdfu")
-_fov_range = 120
+_fov_range = 350
+_fov_angle = 20
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
