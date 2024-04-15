@@ -1,9 +1,7 @@
 extends RigidBody2D
 
 
-var force_strength = 1
-
-
 func _on_timer_timeout() -> void:
-	apply_central_impulse(Vector2.UP * force_strength * randf_range(10, 20))
-	force_strength = -force_strength
+	var force_sign = 1 if rotation > 0 else -1
+	var force = Vector2.UP * force_sign * randf_range(20, 40)
+	apply_central_impulse(force)

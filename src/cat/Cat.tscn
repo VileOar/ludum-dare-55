@@ -79,6 +79,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_eilqs")
 
 [node name="Timer" type="Timer" parent="Tail"]
+wait_time = 1.2
 autostart = true
 
 [connection signal="timeout" from="TempStopTimer" to="." method="_on_temp_stop_timer_timeout"]
