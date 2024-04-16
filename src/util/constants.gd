@@ -16,11 +16,11 @@ const items_icons_folder = "res://assets/game_assets/Objetos/tamanho maior/"
 ## data that holds stats for all items
 var items_stats = {
 	"tuna": {"mass":2, "radius":72, "texture":"tuna.png", "attract":1},
-	"ball": {"mass":0.5, "radius":56, "texture":"ball.png", "attract":1},
-	"balloon": {"mass":0.3, "radius":48, "texture":"balloon.png", "attract":-1},
-	"banana": {"mass":1, "radius":56, "texture":"banana.png", "attract":-1},
-	"novelo": {"mass":1, "radius":56, "texture":"novelo.png", "attract":1},
-	"lemon": {"mass":0.8, "radius":64, "texture":"lemon.png", "attract":-1},
+	"ball": {"mass":0.5, "radius":24, "texture":"ball.png", "attract":1},
+	"balloon": {"mass":0.3, "radius":32, "texture":"balloon.png", "attract":-1},
+	"banana": {"mass":1, "radius":48, "texture":"banana.png", "attract":-1},
+	"novelo": {"mass":1, "radius":32, "texture":"novelo.png", "attract":1},
+	"lemon": {"mass":0.8, "radius":32, "texture":"lemon.png", "attract":-1},
 }
 ## return the dictionary data of items
 func get_item_data(item_id: String) -> Dictionary:
