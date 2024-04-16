@@ -161,7 +161,6 @@ theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_font_sizes/font_size = 64
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_kd8pg")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_qaa3k")
-disabled = true
 text = "Back to Main Menu"
 
 [node name="HSeparator5" type="HSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
