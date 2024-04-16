@@ -157,6 +157,8 @@ text = "Back to Main Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_8a5er")
+volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/CenterContainer/MenuButton" to="." method="_on_menu_button_pressed"]

@@ -107,6 +107,7 @@ rotation = 3.14159
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_7u30t")
+volume_db = -6.0
 autoplay = true
 bus = &"Music"
 

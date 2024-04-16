@@ -302,7 +302,9 @@ layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_kowhf")
+volume_db = -10.0
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

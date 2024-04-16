@@ -50,9 +50,12 @@ shape = SubResource("RectangleShape2D_v5g6x")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_mnqik")
+volume_db = -5.0
 bus = &"SFX"
 
 [node name="Purr" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_vkv6w")
+volume_db = 10.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]

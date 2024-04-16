@@ -157,5 +157,6 @@ text = "Back to Main Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_pcr57")
+volume_db = -7.0
 autoplay = true
 bus = &"Music"
