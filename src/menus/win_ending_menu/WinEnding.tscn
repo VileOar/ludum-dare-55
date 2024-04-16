@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmk05ppp2qeq1"]
+[gd_scene load_steps=14 format=3 uid="uid://dmk05ppp2qeq1"]
 
 [ext_resource type="Texture2D" uid="uid://dikgtf7pfc31u" path="res://assets/menus_backgrounds/gameoverscreens4.png" id="1_k56ey"]
 [ext_resource type="Texture2D" uid="uid://eancmbsoycf1" path="res://assets/_tmp/gameoverscreens.png" id="2_yuncl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://bvdtdbyldbs20" path="res://src/ui_and_themes/title_default_ui_theme.tres" id="4_gyvk7"]
 [ext_resource type="Theme" uid="uid://epa2afgeusve" path="res://src/ui_and_themes/white_default_ui_theme.tres" id="5_qwkkw"]
 [ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="6_ryj35"]
+[ext_resource type="AudioStream" uid="uid://ct3uxu3fdugg1" path="res://assets/music/winer Edit 1 Export 1.ogg" id="7_8a5er"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3cn3h"]
 texture = ExtResource("1_k56ey")
@@ -151,3 +152,7 @@ theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_esu5w")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_f260n")
 text = "Back to Main Menu"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_8a5er")
+autoplay = true
