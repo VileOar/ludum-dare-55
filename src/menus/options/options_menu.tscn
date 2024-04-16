@@ -1,16 +1,23 @@
-[gd_scene load_steps=18 format=3 uid="uid://wg26fathbma7"]
+[gd_scene load_steps=23 format=3 uid="uid://wg26fathbma7"]
 
 [ext_resource type="Script" path="res://src/menus/options/options_menu.gd" id="1_jvye0"]
-[ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_h8m2f"]
+[ext_resource type="Texture2D" uid="uid://yeoelp1x3srs" path="res://assets/menus_backgrounds/pause_menu_clean.png" id="2_0nq2b"]
+[ext_resource type="Texture2D" uid="uid://cfy4h2yrohao1" path="res://assets/_tmp/options_menu.png" id="3_ykio6"]
 [ext_resource type="Texture2D" uid="uid://b8u38etotq5kd" path="res://assets/UIElements/bar_disabled.png" id="4_0wj8q"]
+[ext_resource type="Theme" uid="uid://bvdtdbyldbs20" path="res://src/ui_and_themes/title_default_ui_theme.tres" id="4_ewh7r"]
+[ext_resource type="Theme" uid="uid://epa2afgeusve" path="res://src/ui_and_themes/white_default_ui_theme.tres" id="5_6juty"]
 [ext_resource type="Texture2D" uid="uid://dm5r0ommyyqym" path="res://assets/UIElements/bar.png" id="5_27p7f"]
 [ext_resource type="Theme" uid="uid://bx4vodcpsorfx" path="res://src/ui_and_themes/options_ui.tres" id="5_ao4bh"]
 [ext_resource type="FontFile" uid="uid://dy6hxh7uq0myf" path="res://assets/fonts/Berlin Sans FB Regular.ttf" id="5_fgqdm"]
 [ext_resource type="Texture2D" uid="uid://c5c1yjke2stqy" path="res://assets/UIElements/slider.png" id="6_2nw17"]
 [ext_resource type="Script" path="res://src/menus/options/volume_slider.gd" id="7_2o2dj"]
+[ext_resource type="Texture2D" uid="uid://drjgwrgqyyni0" path="res://assets/UIElements/bar_highlight.png" id="8_hctda"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uho8c"]
-bg_color = Color(0, 0.439216, 0.490196, 1)
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f5eqj"]
+texture = ExtResource("2_0nq2b")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uw3tw"]
+texture = ExtResource("3_ykio6")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jmax6"]
 
@@ -59,7 +66,7 @@ HSlider/constants/center_grabber = 0
 HSlider/constants/grabber_offset = 0
 HSlider/icons/grabber = ExtResource("5_27p7f")
 HSlider/icons/grabber_disabled = ExtResource("4_0wj8q")
-HSlider/icons/grabber_highlight = ExtResource("5_27p7f")
+HSlider/icons/grabber_highlight = ExtResource("8_hctda")
 HSlider/icons/tick = ExtResource("6_2nw17")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_iaa3b")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_30dqa")
@@ -78,13 +85,14 @@ script = ExtResource("1_jvye0")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_uho8c")
+theme_override_styles/panel = SubResource("StyleBoxTexture_f5eqj")
 
 [node name="BackgroundHelper" type="PanelContainer" parent="."]
 visible = false
 layout_mode = 2
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uw3tw")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -114,7 +122,7 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_jmax6")
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_h8m2f")
+theme = ExtResource("4_ewh7r")
 theme_override_font_sizes/font_size = 66
 text = "OPTIONS"
 
@@ -141,14 +149,14 @@ layout_mode = 2
 [node name="MasterVolume" type="Label" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MasterVolumeContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_h8m2f")
-theme_override_font_sizes/font_size = 66
-text = "master volume
+theme = ExtResource("5_6juty")
+theme_override_font_sizes/font_size = 60
+text = "Master Volume
 "
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MasterVolumeContainer"]
 layout_mode = 2
-theme_override_constants/separation = 117
+theme_override_constants/separation = 215
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hry04")
 
 [node name="SliderContainer" type="VBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MasterVolumeContainer"]
@@ -175,13 +183,13 @@ layout_mode = 2
 [node name="MusicVolume" type="Label" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MusicVolumeContainer3"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_h8m2f")
-theme_override_font_sizes/font_size = 66
-text = "music volume"
+theme = ExtResource("5_6juty")
+theme_override_font_sizes/font_size = 60
+text = "Music Volume"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MusicVolumeContainer3"]
 layout_mode = 2
-theme_override_constants/separation = 154
+theme_override_constants/separation = 248
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hry04")
 
 [node name="SliderContainer" type="VBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/MusicVolumeContainer3"]
@@ -208,13 +216,13 @@ layout_mode = 2
 [node name="SoundVolume" type="Label" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_h8m2f")
-theme_override_font_sizes/font_size = 66
-text = "sfx volume"
+theme = ExtResource("5_6juty")
+theme_override_font_sizes/font_size = 60
+text = "Sound Effects"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume"]
 layout_mode = 2
-theme_override_constants/separation = 228
+theme_override_constants/separation = 260
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hry04")
 
 [node name="SliderContainer" type="VBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume"]
@@ -223,7 +231,7 @@ layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume/SliderContainer"]
 layout_mode = 2
-theme_override_constants/separation = 19
+theme_override_constants/separation = 22
 theme_override_styles/separator = SubResource("StyleBoxEmpty_jmax6")
 
 [node name="SoundSlider" type="HSlider" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/SoundVolume/SliderContainer"]
@@ -241,12 +249,13 @@ layout_mode = 2
 [node name="ResolutionLabel" type="Label" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/ResolutionContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_h8m2f")
-text = "resolution"
+theme = ExtResource("5_6juty")
+theme_override_font_sizes/font_size = 60
+text = "Resolution"
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/ResolutionContainer"]
 layout_mode = 2
-theme_override_constants/separation = 217
+theme_override_constants/separation = 328
 theme_override_styles/separator = SubResource("StyleBoxEmpty_hry04")
 
 [node name="ResolutionDropdown" type="OptionButton" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/ResolutionContainer"]
