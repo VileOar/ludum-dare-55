@@ -1,9 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://gkb307hkjv4f"]
+[gd_scene load_steps=18 format=3 uid="uid://gkb307hkjv4f"]
 
 [ext_resource type="Script" path="res://src/menus/main_menu/main_menu.gd" id="1_w2pxe"]
+[ext_resource type="Texture2D" uid="uid://b3ane0rwa5rxm" path="res://assets/menus_backgrounds/cat_menudarkened2.png" id="2_0p8xs"]
 [ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_b71m6"]
-[ext_resource type="Texture2D" uid="uid://d2xko5gsjdny7" path="res://assets/UIElements/arrow2.png" id="3_srml1"]
+[ext_resource type="Texture2D" uid="uid://dluftwwnllry5" path="res://assets/_tmp/cat_menudarkened3.png" id="3_8atlm"]
+[ext_resource type="Theme" uid="uid://bvdtdbyldbs20" path="res://src/ui_and_themes/title_default_ui_theme.tres" id="3_cxp6t"]
 [ext_resource type="PackedScene" uid="uid://wg26fathbma7" path="res://src/menus/options/options_menu.tscn" id="4_dhve8"]
+[ext_resource type="Texture2D" uid="uid://cfuwjb7ctqu08" path="res://assets/game_assets/folhas/relva3.png" id="4_leq5d"]
+[ext_resource type="PackedScene" uid="uid://dxt4jp5jeoqvf" path="res://src/menus/credits/credits.tscn" id="8_5bmg1"]
+[ext_resource type="PackedScene" uid="uid://ci5dx05toechq" path="res://src/menus/HowToPlay/HowToPlay.tscn" id="9_jn38u"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36kx8"]
+texture = ExtResource("2_0p8xs")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ptmd"]
+texture = ExtResource("3_8atlm")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_twdcm"]
 
@@ -12,31 +23,21 @@
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_67424"]
 
 [sub_resource type="Curve" id="Curve_22gla"]
-_data = [Vector2(0, 0.010989), 0.0, 0.0, 0, 0, Vector2(0.980676, 0.978022), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_m5hqa"]
 curve = SubResource("Curve_22gla")
-
-[sub_resource type="Curve" id="Curve_vlqgk"]
-min_value = -360.0
-max_value = 360.0
-_data = [Vector2(0.00483092, -114.725), 0.0, 0.0, 0, 0, Vector2(0.94686, 288.791), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_7vxh1"]
-curve = SubResource("Curve_vlqgk")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6f4xo"]
 lifetime_randomness = 0.52
 particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 60.0
-angle_min = 60.0
-angle_max = 240.0
-angle_curve = SubResource("CurveTexture_7vxh1")
+angle_min = 90.0
+angle_max = 90.0
 spread = 180.0
-initial_velocity_min = 5.0
+initial_velocity_min = 20.0
 initial_velocity_max = 120.0
 gravity = Vector3(0, -98, 0)
 linear_accel_max = 10.0
@@ -61,6 +62,46 @@ script = ExtResource("1_w2pxe")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_36kx8")
+
+[node name="BackgroundAssist" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_8ptmd")
+
+[node name="ForDummies" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ForDummies"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="ForDummies/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 461
+theme_override_styles/separator = SubResource("StyleBoxEmpty_twdcm")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ForDummies/VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="ForDummies/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 448
+theme_override_styles/separator = SubResource("StyleBoxEmpty_twdcm")
+
+[node name="Title2" type="Label" parent="ForDummies/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("3_cxp6t")
+theme_override_font_sizes/font_size = 60
+text = "(for dummies)"
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -76,7 +117,7 @@ layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 340
+theme_override_constants/separation = 223
 theme_override_styles/separator = SubResource("StyleBoxEmpty_twdcm")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -84,52 +125,31 @@ layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 118
+theme_override_constants/separation = 78
 theme_override_styles/separator = SubResource("StyleBoxEmpty_twdcm")
 
-[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-
-[node name="Logo" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer/CenterContainer"]
-custom_minimum_size = Vector2(295, 190)
-layout_mode = 2
-expand_mode = 3
-
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 20
-theme_override_styles/separator = SubResource("StyleBoxEmpty_twdcm")
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-theme_override_constants/separation = 118
-theme_override_styles/separator = SubResource("StyleBoxEmpty_twdcm")
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Title" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("2_b71m6")
-theme_override_font_sizes/font_size = 64
-text = "temp title"
+theme = ExtResource("3_cxp6t")
+text = "       How to
+Summon a Cat"
 
 [node name="HorizontalContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HorizontalContainer"]
 layout_mode = 2
-theme_override_constants/margin_right = 295
+theme_override_constants/margin_left = 76
 
 [node name="VButtonsContainer" type="VBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = -6
 alignment = 1
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 40
+theme_override_constants/separation = 432
 theme_override_styles/separator = SubResource("StyleBoxEmpty_twdcm")
 
 [node name="PlayButton" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
@@ -148,9 +168,29 @@ theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oo7in")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_oo7in")
-text = "start game
+text = "Summon Game
 "
 flat = true
+alignment = 0
+
+[node name="HowToPlayButton" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
+custom_minimum_size = Vector2(400, 64)
+layout_mode = 2
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../CreditsButton")
+focus_next = NodePath("../CreditsButton")
+focus_previous = NodePath("../PlayButton")
+theme = ExtResource("2_b71m6")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.831373, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_oo7in")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_67424")
+text = "How to play"
+alignment = 0
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 custom_minimum_size = Vector2(400, 64)
@@ -166,11 +206,11 @@ theme_override_colors/font_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0.831373, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
-theme_override_font_sizes/font_size = 64
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oo7in")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_67424")
-text = "options
+text = "Options
 "
+alignment = 0
 
 [node name="CreditsButton" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 custom_minimum_size = Vector2(400, 64)
@@ -186,11 +226,10 @@ theme_override_colors/font_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0.831373, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
-theme_override_font_sizes/font_size = 64
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oo7in")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_67424")
-disabled = true
-text = "credits"
+text = "Credits"
+alignment = 0
 
 [node name="ExitButton" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 unique_name_in_owner = true
@@ -207,10 +246,10 @@ theme_override_colors/font_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0.831373, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
-theme_override_font_sizes/font_size = 64
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_oo7in")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_67424")
-text = "exit"
+text = "Quit"
+alignment = 0
 
 [node name="Effects" type="Control" parent="."]
 layout_mode = 3
@@ -220,14 +259,44 @@ offset_top = 837.0
 offset_right = 1706.0
 offset_bottom = 877.0
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="Effects"]
-amount = 9
+[node name="GPUParticles2D3" type="GPUParticles2D" parent="Effects"]
+position = Vector2(-734, -54)
+amount = 3
 amount_ratio = 0.5
 process_material = SubResource("ParticleProcessMaterial_6f4xo")
-texture = ExtResource("3_srml1")
+texture = ExtResource("4_leq5d")
+lifetime = 2.5
+randomness = 0.6
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="Effects"]
+position = Vector2(-1159, -94)
+amount = 3
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_6f4xo")
+texture = ExtResource("4_leq5d")
+lifetime = 2.5
+randomness = 0.6
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Effects"]
+position = Vector2(141, -310)
+amount = 3
+amount_ratio = 0.5
+process_material = SubResource("ParticleProcessMaterial_6f4xo")
+texture = ExtResource("4_leq5d")
 lifetime = 2.5
 randomness = 0.6
 
 [node name="OptionsMenu" parent="." instance=ExtResource("4_dhve8")]
 visible = false
 layout_mode = 0
+
+[node name="Credits" parent="." instance=ExtResource("8_5bmg1")]
+visible = false
+layout_mode = 1
+
+[node name="HowToPlay" parent="." instance=ExtResource("9_jn38u")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/HowToPlayButton" to="." method="_on_how_to_play_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/CreditsButton" to="." method="_on_credits_button_pressed"]

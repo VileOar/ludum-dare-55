@@ -1,66 +1,22 @@
-[gd_scene load_steps=16 format=3 uid="uid://bejtoe3wwm5hr"]
+[gd_scene load_steps=14 format=3 uid="uid://bejtoe3wwm5hr"]
 
 [ext_resource type="Script" path="res://src/menus/bad_ending_menu/bad_ending.gd" id="1_cccxb"]
-[ext_resource type="Texture2D" uid="uid://d3535016rbirw" path="res://assets/_tmp/you_died.jpg" id="1_yb2xe"]
-[ext_resource type="Texture2D" uid="uid://dm5r0ommyyqym" path="res://assets/UIElements/bar.png" id="2_o0yu6"]
-[ext_resource type="Texture2D" uid="uid://b8u38etotq5kd" path="res://assets/UIElements/bar_disabled.png" id="3_jls42"]
-[ext_resource type="Texture2D" uid="uid://c5c1yjke2stqy" path="res://assets/UIElements/slider.png" id="4_362yt"]
-[ext_resource type="FontFile" uid="uid://dy6hxh7uq0myf" path="res://assets/fonts/Berlin Sans FB Regular.ttf" id="5_e7jjj"]
-[ext_resource type="AudioStream" uid="uid://b1v07ypolsevr" path="res://assets/music/game_over_theme.ogg" id="7_k537e"]
+[ext_resource type="Texture2D" uid="uid://s7w3jykcfccx" path="res://assets/menus_backgrounds/bad_gameoverscreens3.png" id="2_2gp6b"]
+[ext_resource type="Texture2D" uid="uid://doccoqcudewcm" path="res://assets/_tmp/gameoverscreens2.png" id="2_lmw8f"]
+[ext_resource type="Theme" uid="uid://bvdtdbyldbs20" path="res://src/ui_and_themes/title_default_ui_theme.tres" id="3_50ols"]
+[ext_resource type="Theme" uid="uid://epa2afgeusve" path="res://src/ui_and_themes/white_default_ui_theme.tres" id="4_g58bv"]
+[ext_resource type="Texture2D" uid="uid://v01iuoupqa5v" path="res://assets/game_assets/HUD + Background/barras.png" id="4_ob136"]
+[ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="5_s0rnr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5w1fm"]
+texture = ExtResource("2_2gp6b")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nj37v"]
-texture = ExtResource("1_yb2xe")
+texture = ExtResource("2_lmw8f")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2fh43"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iaa3b"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.4)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_30dqa"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0.75)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 6
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nypso"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-corner_detail = 6
-
-[sub_resource type="Theme" id="Theme_o1rc6"]
-default_font = ExtResource("5_e7jjj")
-default_font_size = 64
-HSlider/constants/center_grabber = 0
-HSlider/constants/grabber_offset = 0
-HSlider/icons/grabber = ExtResource("2_o0yu6")
-HSlider/icons/grabber_disabled = ExtResource("3_jls42")
-HSlider/icons/grabber_highlight = ExtResource("2_o0yu6")
-HSlider/icons/tick = ExtResource("4_362yt")
-HSlider/styles/grabber_area = SubResource("StyleBoxFlat_iaa3b")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_30dqa")
-HSlider/styles/slider = SubResource("StyleBoxFlat_nypso")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncfh2"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4gwtt"]
 
@@ -79,7 +35,23 @@ script = ExtResource("1_cccxb")
 layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5w1fm")
+
+[node name="BackgroundAssist" type="PanelContainer" parent="."]
+visible = false
+layout_mode = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_nj37v")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 1125.0
+offset_top = 698.0
+offset_right = 2395.0
+offset_bottom = 836.0
+scale = Vector2(0.48, 0.5)
+texture = ExtResource("4_ob136")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -95,20 +67,24 @@ layout_mode = 2
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 176
+theme_override_constants/separation = 250
 theme_override_styles/separator = SubResource("StyleBoxEmpty_2fh43")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 925
+theme_override_styles/separator = SubResource("StyleBoxEmpty_ncfh2")
+
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = SubResource("Theme_o1rc6")
-theme_override_font_sizes/font_size = 66
-text = "Game Over
-"
+theme = ExtResource("3_50ols")
+theme_override_font_sizes/font_size = 113
+text = "Aww!"
 
 [node name="HorizontalContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -116,33 +92,64 @@ alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HorizontalContainer"]
 layout_mode = 2
+theme_override_constants/margin_left = 932
 
 [node name="VButtonsContainer" type="VBoxContainer" parent="MarginContainer/HorizontalContainer/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
+[node name="HSeparator3" type="HSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
 layout_mode = 2
-theme_override_constants/separation = 600
+theme_override_constants/separation = 117
 theme_override_styles/separator = SubResource("StyleBoxEmpty_2fh43")
 
-[node name="MenuButton" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
-unique_name_in_owner = true
+[node name="Label" type="Label" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
+layout_mode = 2
+theme = ExtResource("4_g58bv")
+theme_override_font_sizes/font_size = 60
+text = "The cat ran away so
+the summoning failed :("
+horizontal_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
+visible = false
+layout_mode = 2
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2fh43")
+
+[node name="MenuButton2" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
+visible = false
 custom_minimum_size = Vector2(400, 64)
 layout_mode = 2
-theme = SubResource("Theme_o1rc6")
+theme = ExtResource("5_s0rnr")
 theme_type_variation = &"FlatButton"
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_color = Color(1, 0.831373, 0, 1)
 theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
 theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
-theme_override_font_sizes/font_size = 64
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_4gwtt")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_4612w")
-text = "back to menu"
+text = "Try Again"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("7_k537e")
-autoplay = true
-mix_target = 2
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
+layout_mode = 2
+theme_override_constants/separation = 105
+theme_override_styles/separator = SubResource("StyleBoxEmpty_2fh43")
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer"]
+layout_mode = 2
+
+[node name="MenuButton" type="Button" parent="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(400, 64)
+layout_mode = 2
+theme = ExtResource("5_s0rnr")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.831373, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_4gwtt")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4612w")
+text = "Back to Main Menu"

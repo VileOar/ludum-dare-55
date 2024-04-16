@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://ci5dx05toechq"]
+
+[ext_resource type="Script" path="res://src/menus/HowToPlay/HowToPlay.gd" id="1_j77b8"]
+[ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_8kurc"]
+[ext_resource type="Texture2D" uid="uid://dt3rdn5a1g76q" path="res://assets/menus_backgrounds/how_to_play2.png" id="2_dyl2i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l0gy3"]
+texture = ExtResource("2_dyl2i")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sv2ou"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ou63p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bs5hi"]
+
+[node name="HowToPlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j77b8")
+
+[node name="Background" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_l0gy3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 838
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="HorizontalContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HorizontalContainer"]
+layout_mode = 2
+theme_override_constants/separation = 86
+theme_override_styles/separator = SubResource("StyleBoxEmpty_sv2ou")
+
+[node name="BackMenuButton" type="Button" parent="MarginContainer/HorizontalContainer"]
+custom_minimum_size = Vector2(400, 64)
+layout_mode = 2
+theme = ExtResource("2_8kurc")
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.882353, 0, 1)
+theme_override_colors/font_hover_color = Color(1, 0.831373, 0, 1)
+theme_override_colors/font_focus_color = Color(1, 0.882353, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.882353, 0, 1)
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ou63p")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bs5hi")
+text = "Back to Main Menu
+"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="MarginContainer/HorizontalContainer/BackMenuButton" to="." method="_on_back_menu_button_pressed"]

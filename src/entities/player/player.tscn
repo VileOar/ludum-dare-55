@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfga545fyyrkd"]
+[gd_scene load_steps=10 format=3 uid="uid://cfga545fyyrkd"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_5ys6p"]
 [ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="2_0xakd"]
 [ext_resource type="Shader" path="res://assets/shaders/strength_indicator.gdshader" id="3_gykpu"]
-[ext_resource type="Texture2D" uid="uid://bmiv3p38v8wi5" path="res://icon.svg" id="4_d0mwv"]
+[ext_resource type="Texture2D" uid="uid://dft2t40js203o" path="res://assets/game_assets/HUD + Background/barra_throwing_cor.png" id="4_vfdj6"]
 [ext_resource type="Script" path="res://src/entities/player/throw_meter.gd" id="5_8jxmx"]
 [ext_resource type="Texture2D" uid="uid://cgrn70rae5m7o" path="res://assets/game_assets/Personagens/character.png" id="6_u4c4v"]
+[ext_resource type="Texture2D" uid="uid://ba3hrlla3ni5c" path="res://assets/game_assets/HUD + Background/barra_throwing_bg.png" id="6_uqey6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qis21"]
 shader = ExtResource("3_gykpu")
@@ -24,10 +25,15 @@ unique_name_in_owner = true
 z_index = 1
 material = SubResource("ShaderMaterial_qis21")
 position = Vector2(64, 0)
-scale = Vector2(1, 0.1875)
-texture = ExtResource("4_d0mwv")
-offset = Vector2(64, 0)
+scale = Vector2(0.85, 1)
+texture = ExtResource("4_vfdj6")
+offset = Vector2(78, 0)
 script = ExtResource("5_8jxmx")
+
+[node name="BarraThrowingBg" type="Sprite2D" parent="StrengthIndicator"]
+z_index = -1
+texture = ExtResource("6_uqey6")
+offset = Vector2(78, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("6_u4c4v")
