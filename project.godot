@@ -10,12 +10,12 @@ config_version=5
 
 [application]
 
-config/name="LudumDare_55"
-config/version="0.0.001"
+config/name="How To Summon a Cat (For Dummies)"
+config/version="0.0.010"
 run/main_scene="res://src/menus/main_menu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/image="res://assets/game_assets/identity/bootsplash_v2.png"
-config/icon="res://icon.svg"
+config/icon="res://assets/game_assets/identity/iconJogo.png"
 
 [audio]
 
