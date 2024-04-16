@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ct3uxu3fdugg1"
+path="res://.godot/imported/winer Edit 1 Export 1.ogg-76227f68f3f5c8bb5c3061c5a0fb1d44.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/music/winer Edit 1 Export 1.ogg"
+dest_files=["res://.godot/imported/winer Edit 1 Export 1.ogg-76227f68f3f5c8bb5c3061c5a0fb1d44.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
