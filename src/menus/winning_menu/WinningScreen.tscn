@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://beagshr0b5ex3"]
+[gd_scene load_steps=8 format=3 uid="uid://beagshr0b5ex3"]
 
 [ext_resource type="Script" path="res://src/menus/winning_menu/winning_screen.gd" id="1_mwfcj"]
 [ext_resource type="PackedScene" uid="uid://c15f8n6tsvbed" path="res://src/effects/Fireworks.tscn" id="1_oae4d"]
 [ext_resource type="Texture2D" uid="uid://de2q0fpx0xc6" path="res://assets/_tmp/A WINNER IS YOU.png" id="2_fqkjp"]
+[ext_resource type="AudioStream" uid="uid://ct3uxu3fdugg1" path="res://assets/music/winer Edit 1 Export 1.ogg" id="4_w8jbr"]
 
 [sub_resource type="Animation" id="Animation_po8rk"]
 resource_name = "win_logo_animated"
@@ -59,5 +60,9 @@ libraries = {
 
 [node name="FireworksTimer" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_w8jbr")
+autoplay = true
 
 [connection signal="timeout" from="FireworksTimer" to="." method="_on_timer_timeout"]
