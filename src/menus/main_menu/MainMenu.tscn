@@ -51,6 +51,7 @@ color = Color(1, 1, 1, 0.823529)
 alpha_curve = SubResource("CurveTexture_m5hqa")
 
 [node name="MainMenu" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
