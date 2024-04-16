@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ctvekxs34l1oc"]
+[gd_scene load_steps=14 format=3 uid="uid://ctvekxs34l1oc"]
 
 [ext_resource type="Texture2D" uid="uid://dw1chptfanwiu" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
 [ext_resource type="Script" path="res://src/tmp_game/test_game.gd" id="1_ond2o"]
@@ -8,24 +8,16 @@
 [ext_resource type="PackedScene" uid="uid://cfroe4r8671ax" path="res://src/menus/HUD/hud.tscn" id="3_fgk8y"]
 [ext_resource type="PackedScene" uid="uid://cfga545fyyrkd" path="res://src/entities/player/player.tscn" id="8_346uj"]
 [ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="8_wr4eh"]
+[ext_resource type="AudioStream" uid="uid://bpnycp1w3iaaw" path="res://assets/soundfx/482735__copyc4t__cartoon-long-throw.wav" id="9_gyote"]
 [ext_resource type="PackedScene" uid="uid://comndc2e2crse" path="res://src/menus/pause/pause_menu.tscn" id="9_wn2cx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tj4v"]
-size = Vector2(80, 1080)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8yyy"]
+size = Vector2(32, 1080)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_akqwn"]
-size = Vector2(80, 1080)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_dest5"]
-size = Vector2(1920, 80)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlg5t"]
-size = Vector2(1920, 88)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8r8o"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73ob8"]
 size = Vector2(1920, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxqva"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a05jt"]
 size = Vector2(475, 32)
 
 [node name="TestGame" type="Node2D"]
@@ -61,8 +53,8 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
-position = Vector2(-24, 540)
-shape = SubResource("RectangleShape2D_8tj4v")
+position = Vector2(0, 540)
+shape = SubResource("RectangleShape2D_a8yyy")
 
 [node name="WallRight" type="StaticBody2D" parent="Walls"]
 position = Vector2(1920, 0)
@@ -70,16 +62,16 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
-position = Vector2(24, 540)
-shape = SubResource("RectangleShape2D_akqwn")
+position = Vector2(0, 540)
+shape = SubResource("RectangleShape2D_a8yyy")
 
 [node name="WallTop" type="StaticBody2D" parent="Walls"]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
-position = Vector2(960, -24)
-shape = SubResource("RectangleShape2D_dest5")
+position = Vector2(960, 0)
+shape = SubResource("RectangleShape2D_73ob8")
 
 [node name="WallBottom" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 1080)
@@ -87,8 +79,8 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
-position = Vector2(960, 28)
-shape = SubResource("RectangleShape2D_mlg5t")
+position = Vector2(960, 0)
+shape = SubResource("RectangleShape2D_73ob8")
 
 [node name="WallHudTop" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 170)
@@ -97,7 +89,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallHudTop"]
 position = Vector2(960, 0)
-shape = SubResource("RectangleShape2D_p8r8o")
+shape = SubResource("RectangleShape2D_73ob8")
 
 [node name="WallHudRightTop" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 170)
@@ -107,11 +99,15 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallHudRightTop"]
 position = Vector2(1708, 96)
 rotation = 0.479966
-shape = SubResource("RectangleShape2D_vxqva")
+shape = SubResource("RectangleShape2D_a05jt")
 
 [node name="Cat" parent="." instance=ExtResource("8_wr4eh")]
 position = Vector2(1813, 612)
 rotation = 3.14159
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gyote")
+bus = &"SFX"
 
 [node name="Player" parent="." instance=ExtResource("8_346uj")]
 unique_name_in_owner = true

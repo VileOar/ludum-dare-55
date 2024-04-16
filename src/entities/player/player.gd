@@ -34,7 +34,7 @@ func _on_release_throw(impulse_vector):
 	if is_instance_valid(_obj):
 		_obj.enable_collision()
 		_obj.apply_central_impulse(impulse_vector)
-		$"../AudioStreamPlayer".play()
+		$"./AudioStreamPlayer".play()
 	
 	_strength.can_throw = false
 	await get_tree().create_timer(1.5).timeout # magic numbers are to be replaced

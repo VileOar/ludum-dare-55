@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cfga545fyyrkd"]
+[gd_scene load_steps=11 format=3 uid="uid://cfga545fyyrkd"]
 
 [ext_resource type="Script" path="res://src/entities/player/player.gd" id="1_5ys6p"]
 [ext_resource type="PackedScene" uid="uid://cyi87gjn0jmf6" path="res://src/entities/throwable.tscn" id="2_0xakd"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/entities/player/throw_meter.gd" id="5_8jxmx"]
 [ext_resource type="Texture2D" uid="uid://cgrn70rae5m7o" path="res://assets/game_assets/Personagens/character.png" id="6_u4c4v"]
 [ext_resource type="Texture2D" uid="uid://ba3hrlla3ni5c" path="res://assets/game_assets/HUD + Background/barra_throwing_bg.png" id="6_uqey6"]
+[ext_resource type="AudioStream" uid="uid://bpnycp1w3iaaw" path="res://assets/soundfx/482735__copyc4t__cartoon-long-throw.wav" id="8_mnqik"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qis21"]
 shader = ExtResource("3_gykpu")
@@ -14,7 +15,7 @@ shader_parameter/percent = 0.0
 shader_parameter/low_alpha = 0.3
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v5g6x"]
-size = Vector2(256, 256)
+size = Vector2(192, 192)
 
 [node name="Player" type="Node2D"]
 script = ExtResource("1_5ys6p")
@@ -43,7 +44,11 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(64, 0)
+position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_v5g6x")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_mnqik")
+bus = &"SFX"
 
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
