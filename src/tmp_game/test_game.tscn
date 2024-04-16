@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ctvekxs34l1oc"]
+[gd_scene load_steps=16 format=3 uid="uid://ctvekxs34l1oc"]
 
 [ext_resource type="Texture2D" uid="uid://dw1chptfanwiu" path="res://assets/game_assets/HUD + Background/bgd.png" id="1_77tnb"]
 [ext_resource type="Script" path="res://src/tmp_game/test_game.gd" id="1_ond2o"]
@@ -10,13 +10,22 @@
 [ext_resource type="PackedScene" uid="uid://c47hc7nk4cpwu" path="res://src/cat/Cat.tscn" id="8_wr4eh"]
 [ext_resource type="PackedScene" uid="uid://comndc2e2crse" path="res://src/menus/pause/pause_menu.tscn" id="9_wn2cx"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a8yyy"]
-size = Vector2(32, 1080)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tj4v"]
+size = Vector2(80, 1080)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_73ob8"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_akqwn"]
+size = Vector2(80, 1080)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dest5"]
+size = Vector2(1920, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlg5t"]
+size = Vector2(1920, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8r8o"]
 size = Vector2(1920, 32)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a05jt"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vxqva"]
 size = Vector2(475, 32)
 
 [node name="TestGame" type="Node2D"]
@@ -52,8 +61,8 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallLeft"]
-position = Vector2(0, 540)
-shape = SubResource("RectangleShape2D_a8yyy")
+position = Vector2(-24, 540)
+shape = SubResource("RectangleShape2D_8tj4v")
 
 [node name="WallRight" type="StaticBody2D" parent="Walls"]
 position = Vector2(1920, 0)
@@ -61,16 +70,16 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallRight"]
-position = Vector2(0, 540)
-shape = SubResource("RectangleShape2D_a8yyy")
+position = Vector2(24, 540)
+shape = SubResource("RectangleShape2D_akqwn")
 
 [node name="WallTop" type="StaticBody2D" parent="Walls"]
 collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallTop"]
-position = Vector2(960, 0)
-shape = SubResource("RectangleShape2D_73ob8")
+position = Vector2(960, -24)
+shape = SubResource("RectangleShape2D_dest5")
 
 [node name="WallBottom" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 1080)
@@ -78,8 +87,8 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallBottom"]
-position = Vector2(960, 0)
-shape = SubResource("RectangleShape2D_73ob8")
+position = Vector2(960, 28)
+shape = SubResource("RectangleShape2D_mlg5t")
 
 [node name="WallHudTop" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 170)
@@ -88,7 +97,7 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallHudTop"]
 position = Vector2(960, 0)
-shape = SubResource("RectangleShape2D_73ob8")
+shape = SubResource("RectangleShape2D_p8r8o")
 
 [node name="WallHudRightTop" type="StaticBody2D" parent="Walls"]
 position = Vector2(0, 170)
@@ -98,7 +107,7 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/WallHudRightTop"]
 position = Vector2(1708, 96)
 rotation = 0.479966
-shape = SubResource("RectangleShape2D_a05jt")
+shape = SubResource("RectangleShape2D_vxqva")
 
 [node name="Cat" parent="." instance=ExtResource("8_wr4eh")]
 position = Vector2(1813, 612)

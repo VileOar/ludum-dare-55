@@ -99,7 +99,7 @@ func _physics_process(delta):
 			var modifier : int = sign(target_angle_dif)
 			rotation = move_toward(rotation, rotation + modifier * target_angle_dif, rot_coef * rot_speed)
 
-		if (target_object.position-position).length() <= minimum_distance:
+		if (target_object.position-position).length() <= minimum_distance and is_equal_approx(target_object.linear_velocity.length(), 0.0):
 			current_state = States.IDLING
 			head_ref.set_turn_state(CatHead.TurnStates.IDLE)
 	
@@ -149,7 +149,7 @@ func _on_wander_stop_timer_timeout():
 
 
 func _on_cat_head_object_detected(throwable:Throwable):
-	if throwable != target_object:
+	if throwable != target_object and (target_object == null or throwable.linear_velocity.length() >= target_object.linear_velocity.length()):
 		print("Detect %s!" % [throwable])
 		current_state = States.MOVING_TRUE
 		head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, throwable)

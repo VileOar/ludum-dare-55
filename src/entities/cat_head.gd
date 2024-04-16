@@ -86,8 +86,7 @@ func _physics_process(_delta: float) -> void:
 				direction_vector = direction_vector.rotated(PI)
 			
 			# convert from global rotation to local rotation
-			var new_rot = global_transform.x.angle_to(direction_vector)
-			new_rot -= global_rotation
+			var new_rot = rotation + global_transform.x.angle_to(direction_vector)
 			
 			# will always try to look at or away from locked_position, if that does not exceed limits
 			new_rot = clamp(new_rot, -_MAX_TURN_ANGLE, _MAX_TURN_ANGLE)
