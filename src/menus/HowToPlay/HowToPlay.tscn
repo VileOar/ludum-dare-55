@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ci5dx05toechq"]
+[gd_scene load_steps=8 format=3 uid="uid://ci5dx05toechq"]
 
 [ext_resource type="Script" path="res://src/menus/HowToPlay/HowToPlay.gd" id="1_j77b8"]
 [ext_resource type="Theme" uid="uid://c6c2i20fohyxl" path="res://src/ui_and_themes/default_ui_theme.tres" id="2_8kurc"]
+[ext_resource type="Texture2D" uid="uid://dt3rdn5a1g76q" path="res://assets/menus_backgrounds/how_to_play2.png" id="2_dyl2i"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l0gy3"]
+texture = ExtResource("2_dyl2i")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sv2ou"]
 
@@ -38,7 +40,7 @@ layout_mode = 2
 
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HorizontalContainer"]
 layout_mode = 2
-theme_override_constants/separation = 166
+theme_override_constants/separation = 86
 theme_override_styles/separator = SubResource("StyleBoxEmpty_sv2ou")
 
 [node name="BackMenuButton" type="Button" parent="MarginContainer/HorizontalContainer"]
