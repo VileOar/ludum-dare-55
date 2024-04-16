@@ -14,6 +14,7 @@ rotation = 3.14159
 texture = ExtResource("2_sdui5")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="FOVPolygonShape" type="CollisionPolygon2D" parent="Area2D"]
 unique_name_in_owner = true

@@ -32,6 +32,7 @@ func _ready() -> void:
 ## callback to user release throw; connected to the ThrowMeter
 func _on_release_throw(impulse_vector):
 	if is_instance_valid(_obj):
+		_obj.enable_collision()
 		_obj.apply_central_impulse(impulse_vector)
 	
 	_strength.can_throw = false

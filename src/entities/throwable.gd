@@ -6,6 +6,12 @@ class_name Throwable
 var attract
 
 
+func enable_collision():
+	set_collision_layer_value(1, true)
+	set_collision_mask_value(1, true)
+	set_collision_mask_value(3, true)
+
+
 func populate_item(item_id: String):
 	var item_data = Constants.get_item_data(item_id)
 	
