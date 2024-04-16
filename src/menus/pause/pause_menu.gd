@@ -34,6 +34,7 @@ func _input(_event):
 # Starts game
 func _on_continue_pressed() -> void:
 	_play_click_sfx()
+	get_tree().paused = not get_tree().paused
 	$".".visible = false
 
 

@@ -8,3 +8,4 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_player.new_next_item.connect(_game_logic._on_new_next_item)
+	_player.game_was_won.connect(_game_logic._on_game_won)

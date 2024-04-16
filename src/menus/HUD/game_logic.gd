@@ -10,7 +10,7 @@ var seconds_for_next_value : int = 120
 
 @onready var time_trial = $TimeTrial
 @onready var bad_ending_scene : PackedScene = preload("res://src/menus/bad_ending_menu/bad_ending.tscn")
-@onready var good_ending_scene : PackedScene = preload("res://src/menus/winning_menu/WinningScreen.tscn")
+@onready var good_ending_scene : PackedScene = preload("res://src/menus/win_ending_menu/WinEnding.tscn")
 
 @export var TOTAL_GAME_DURATION : int = 120
 #@export var TOTAL_GAME_DURATION : int = 40
