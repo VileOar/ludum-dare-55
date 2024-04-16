@@ -51,6 +51,9 @@ var is_repelled := false # a cleaner way should be found, i.e. proper state mach
 @export var repel_angle := 70
 
 
+@export var stop_velocity_threshold := 40 # used to check if target_obj is relatively stopped
+
+
 func _ready():
 	temp_stop_timeout_ref.wait_time = temp_stop_time
 	wander_timer_ref.wait_time = wander_time
@@ -111,7 +114,7 @@ func _physics_process(delta):
 			rotation = move_toward(rotation, rotation + modifier * target_angle_dif, rot_coef * rot_speed)
 
 		if !is_repelled:
-			if (target_object.position-position).length() <= minimum_distance and is_equal_approx(target_object.linear_velocity.length(), 0.0):
+			if (target_object.position-position).length() <= minimum_distance and target_object.linear_velocity.length() < stop_velocity_threshold:
 				current_state = States.IDLING
 				head_ref.set_turn_state(CatHead.TurnStates.IDLE)
 
@@ -120,8 +123,6 @@ func _physics_process(delta):
 			head_ref.set_turn_state(CatHead.TurnStates.IDLE)
 
 		
-
-
 # || --- Waypoint Management --- ||
 
 
@@ -188,7 +189,5 @@ func _on_cat_head_object_detected(throwable:Throwable):
 
 			var modifier = 1 if randf() < 0.5 else -1
 			var test = Vector2(position + (throwable.position-position).normalized().rotated(deg_to_rad(repel_angle * modifier)) * repel_vec_length)
-
-			debug_target.set_pos(test)
 
 			set_new_waypoint(null, test, true)
