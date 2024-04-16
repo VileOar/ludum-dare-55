@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dmk05ppp2qeq1"]
+[gd_scene load_steps=15 format=3 uid="uid://dmk05ppp2qeq1"]
 
+[ext_resource type="Script" path="res://src/menus/win_ending_menu/win_ending.gd" id="1_2recq"]
 [ext_resource type="Texture2D" uid="uid://dikgtf7pfc31u" path="res://assets/menus_backgrounds/gameoverscreens4.png" id="1_k56ey"]
 [ext_resource type="Texture2D" uid="uid://eancmbsoycf1" path="res://assets/_tmp/gameoverscreens.png" id="2_yuncl"]
 [ext_resource type="Texture2D" uid="uid://v01iuoupqa5v" path="res://assets/game_assets/HUD + Background/barras.png" id="3_mxxo3"]
@@ -29,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_2recq")
 
 [node name="Background" type="PanelContainer" parent="."]
 layout_mode = 0
@@ -156,3 +158,5 @@ text = "Back to Main Menu"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_8a5er")
 autoplay = true
+
+[connection signal="pressed" from="MarginContainer/HorizontalContainer/MarginContainer/VButtonsContainer/CenterContainer/MenuButton" to="." method="_on_menu_button_pressed"]
