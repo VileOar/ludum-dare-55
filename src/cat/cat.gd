@@ -45,6 +45,11 @@ var wander_timer := 0.0
 
 @onready var head_ref : CatHead = $CatHead
 
+# Repel Vars
+var is_repelled := false # a cleaner way should be found, i.e. proper state machine
+@export var repel_vec_length := 300
+@export var repel_angle := 70
+
 
 func _ready():
 	temp_stop_timeout_ref.wait_time = temp_stop_time
@@ -53,28 +58,29 @@ func _ready():
 
 func _process(delta):
 	if current_state == States.MOVING_TRUE:
-		temp_stop_timer += delta
+		if !is_repelled:
+			temp_stop_timer += delta
 
-		if temp_stop_timer >= temp_stop_check_intervals:
-			temp_stop_timer = 0.0
+			if temp_stop_timer >= temp_stop_check_intervals:
+				temp_stop_timer = 0.0
 
-			if randf() < temp_stop_odds:
-				print("StartTempStop")
-				current_state = States.MOVING_TEMP_STOP
-				temp_stop_timeout_ref.start()
-				head_ref.set_turn_state(CatHead.TurnStates.IDLE)
-				
-	elif current_state == States.MOVING_TRUE:
-		wander_timer += delta
+				if randf() < temp_stop_odds:
+					print("StartTempStop")
+					current_state = States.MOVING_TEMP_STOP
+					temp_stop_timeout_ref.start()
+					head_ref.set_turn_state(CatHead.TurnStates.IDLE)
 
-		if wander_timer >= wander_check_intervals:
-			wander_timer = 0.0
+			# Below is wander timer stuff
+			wander_timer += delta
 
-			if randf() < wander_odds:
-				print("startWander")
-				current_state = States.MOVING_WANDER
-				wander_timer_ref.start()
-				head_ref.set_turn_state(CatHead.TurnStates.MOVE)
+			if wander_timer >= wander_check_intervals:
+				wander_timer = 0.0
+
+				if randf() < wander_odds:
+					print("startWander")
+					current_state = States.MOVING_WANDER
+					wander_timer_ref.start()
+					head_ref.set_turn_state(CatHead.TurnStates.MOVE)
 
 
 func _physics_process(delta):
@@ -83,11 +89,12 @@ func _physics_process(delta):
 		var _v = move_and_collide(transform.x * delta * BASE_MOV_SPEED * move_speed_mltplr)
 
 		if current_state == States.MOVING_TRUE:
-			custom_target_pos = target_object.position
-			variate_waypoint_timer = 0
-			if !target_object.linear_velocity.is_zero_approx():
-				var distance = (custom_target_pos-position).length()
-				rot_coef = (minimum_distance / BASE_MOV_SPEED) / (distance / (BASE_MOV_SPEED * move_speed_mltplr) / (target_angle_dif / 2))
+			if !is_repelled:
+				custom_target_pos = target_object.position
+				variate_waypoint_timer = 0
+				if !target_object.linear_velocity.is_zero_approx():
+					var distance = (custom_target_pos-position).length()
+					rot_coef = (minimum_distance / BASE_MOV_SPEED) / (distance / (BASE_MOV_SPEED * move_speed_mltplr) / (target_angle_dif / 2))
 		else:
 			variate_waypoint_timer += delta
 			if variate_waypoint_timer >= variate_waypoint_interval:
@@ -99,13 +106,20 @@ func _physics_process(delta):
 
 		if abs(target_angle_dif) > target_angle_tolerance:
 			target_angle_dif = transform.x.angle_to(custom_target_pos-position)
-			print(target_angle_dif)
+			#print(target_angle_dif)
 			var modifier : int = sign(target_angle_dif)
 			rotation = move_toward(rotation, rotation + modifier * target_angle_dif, rot_coef * rot_speed)
 
-		if (target_object.position-position).length() <= minimum_distance:
+		if !is_repelled:
+			if (target_object.position-position).length() <= minimum_distance:
+				current_state = States.IDLING
+				head_ref.set_turn_state(CatHead.TurnStates.IDLE)
+
+		if is_repelled && (custom_target_pos-position).length() <= minimum_distance:
 			current_state = States.IDLING
 			head_ref.set_turn_state(CatHead.TurnStates.IDLE)
+
+		
 
 
 # || --- Waypoint Management --- ||
@@ -132,32 +146,49 @@ func variate_waypoint() -> Vector2:
 		max_wander_angle_variation) * modifier)) * wander_length)
 
 
+func new_condition_after_callback():
+	wander_timer = 0
+	temp_stop_timer = 0
+	if abs(rad_to_deg(transform.x.angle_to(target_object.position-position))) > wander_end_angle_check:
+		print("StartIdleFromCallback")
+		current_state = States.IDLING
+		head_ref.set_turn_state(CatHead.TurnStates.IDLE)
+	else:
+		print("StartMoveTrueFromCallback")
+		current_state = States.MOVING_TRUE
+		head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, target_object)
+		set_new_waypoint(target_object, target_object.position,  true)
+
+
 # || --- Callbacks --- ||
 
 
 func _on_temp_stop_timer_timeout():
-	print("StartMoveTrueFromTempEnd")
-	current_state = States.MOVING_TRUE
-	head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, target_object)
+	print("StopTempEnd")
+	new_condition_after_callback()
 
 
 func _on_wander_stop_timer_timeout():
-	#print(abs(rad_to_deg(transform.x.angle_to(target_position-position))))
 	print("StopWander")
-	if abs(rad_to_deg(transform.x.angle_to(target_object.position-position))) > wander_end_angle_check:
-		print("StartIdleFromStop")
-		current_state = States.IDLING
-		head_ref.set_turn_state(CatHead.TurnStates.IDLE)
-	else:
-		print("StartMoveTrueFromWanderEnd")
-		current_state = States.MOVING_TRUE
-		head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, target_object)
-		set_new_waypoint(target_object, target_object.position,  true)
+	new_condition_after_callback()
 
 
 func _on_cat_head_object_detected(throwable:Throwable):
 	if throwable != target_object:
 		print("Detect %s!" % [throwable])
 		current_state = States.MOVING_TRUE
-		head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, throwable)
-		set_new_waypoint(throwable, throwable.position)
+		is_repelled = false
+
+		if throwable.attract > 0:
+			head_ref.set_turn_state(CatHead.TurnStates.LOOK_AT, throwable)
+			set_new_waypoint(throwable, throwable.position)
+		else:
+			head_ref.set_turn_state(CatHead.TurnStates.MOVE)
+			is_repelled = true
+
+			var modifier = 1 if randf() < 0.5 else -1
+			var test = Vector2(position + (throwable.position-position).normalized().rotated(deg_to_rad(repel_angle * modifier)) * repel_vec_length)
+
+			debug_target.set_pos(test)
+
+			set_new_waypoint(null, test, true)

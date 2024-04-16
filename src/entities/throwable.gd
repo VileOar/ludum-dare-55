@@ -3,7 +3,7 @@ extends RigidBody2D
 class_name Throwable
 
 ## the object's attraction value
-var attract
+@export var attract: int
 
 
 func populate_item(item_id: String):
