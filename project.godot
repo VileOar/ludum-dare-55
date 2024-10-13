@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="How To Summon a Cat (For Dummies)"
+config/description="Made for Ludum Dare 55."
 config/version="0.0.010"
 run/main_scene="res://src/menus/main_menu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
